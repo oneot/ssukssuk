@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쑥쑥아동청소년발달센터 | SsukSsuk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    
+    <style>
+        body { font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+        
+        /* 세련된 스크롤바 */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f4; }
+        ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+
+        /* 텍스트 그라데이션 */
+        .text-gradient {
+            background: linear-gradient(to right, #166534, #15803d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 은은한 등장 애니메이션 */
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-[#F9FAFB] text-slate-800 antialiased selection:bg-green-100 selection:text-green-900">
+
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/20 bg-white/70 backdrop-blur-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-6 py-4">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-green-700 rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                    <i data-lucide="sprout" class="w-5 h-5"></i>
+                </div>
+                <span class="self-center text-xl font-bold whitespace-nowrap tracking-tight text-slate-900">SSUKSSUK</span>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button type="button" class="text-white bg-slate-900 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-full text-sm px-6 py-2.5 text-center transition-all hover:shadow-lg hover:-translate-y-0.5">
+                    상담 예약하기
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
+                    <li><a href="#" class="block py-2 px-3 text-slate-500 hover:text-green-700 md:p-0 transition-colors">About</a></li>
+                    <li><a href="#programs" class="block py-2 px-3 text-slate-500 hover:text-green-700 md:p-0 transition-colors">Programs</a></li>
+                    <li><a href="#" class="block py-2 px-3 text-slate-500 hover:text-green-700 md:p-0 transition-colors">Location</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-green-100/50 rounded-full blur-3xl opacity-60 translate-x-1/3 -translate-y-1/4"></div>
+        <div class="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-orange-100/50 rounded-full blur-3xl opacity-60 -translate-x-1/3 translate-y-1/4"></div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="fade-in-up">
+                <span class="inline-flex items-center gap-x-1.5 py-1.5 px-4 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 shadow-sm mb-8">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    대전 송촌동 프리미엄 발달센터
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                    Grow Up, <br class="md:hidden" />
+                    <span class="text-gradient">Step by Step.</span>
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
+                    아이들의 작은 움직임이 큰 성장이 되는 곳.<br>
+                    감각통합부터 작은 도서관까지, 쑥쑥에서 내일을 준비하세요.
+                </p>
+            </div>
+            
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center fade-in-up delay-100">
+                <a href="#programs" class="inline-flex justify-center items-center py-4 px-8 text-base font-semibold text-white rounded-2xl bg-slate-900 hover:bg-slate-800 transition-all hover:shadow-xl hover:-translate-y-1">
+                    프로그램 둘러보기
+                    <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+                <a href="#" class="inline-flex justify-center items-center py-4 px-8 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all hover:shadow-md">
+                    시설 미리보기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 mb-24 fade-in-up delay-200">
+        <div class="relative w-full h-64 md:h-96 bg-slate-200 rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1596464716127-f9a862557963?q=80&w=2070&auto=format&fit=crop" alt="Center Interior" class="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="absolute bottom-8 left-8 text-white">
+                <p class="text-sm font-medium opacity-80 mb-1">Play & Learn</p>
+                <h3 class="text-2xl font-bold">즐거움이 배움이 되는 공간</h3>
+            </div>
+        </div>
+    </div>
+
+    <section id="programs" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 md:flex md:justify-between md:items-end">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Curated Programs</h2>
+                    <p class="text-slate-500 text-lg">아이의 성향과 발달 속도에 맞춘 1:1 맞춤형 솔루션을 제공합니다.</p>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center font-semibold text-green-700 hover:text-green-800 transition">
+                    전체 프로그램 보기 <i data-lucide="arrow-up-right" class="ml-1 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="md:col-span-2 group relative overflow-hidden rounded-[2rem] bg-slate-50 p-8 hover:shadow-xl transition-all duration-300 border border-slate-100">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="shapes" class="w-32 h-32 text-green-600"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-green-600">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">감각통합 & 인지치료</h3>
+                        <p class="text-slate-500 leading-relaxed max-w-md">뇌의 균형 잡힌 발달을 위해 다양한 감각 자극을 조절하는 훈련입니다. 대근육 활동과 미세 운동을 통해 신체 조절 능력을 키웁니다.</p>
+                    </div>
+                </div>
+
+                <div class="md:row-span-2 group relative overflow-hidden rounded-[2rem] bg-slate-900 p-8 hover:shadow-xl transition-all duration-300 text-white flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-green-400">
+                            <i data-lucide="music" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">음악 & 예술 활동</h3>
+                        <p class="text-slate-400 leading-relaxed">드럼, 장구, 미술 등 예술적 표현을 통해 정서를 이완하고 자신감을 회복합니다.</p>
+                    </div>
+                    <div class="mt-8 rounded-2xl overflow-hidden h-48 opacity-80 group-hover:opacity-100 transition-opacity">
+                        <img src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-[2rem] bg-orange-50 p-8 hover:shadow-xl transition-all duration-300 border border-orange-100">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-orange-500">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">작은 도서관</h3>
+                    <p class="text-slate-500 text-sm">책과 함께 쉬어가는 힐링 공간. 스스로 학습하는 습관을 기릅니다.</p>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-[2rem] bg-blue-50 p-8 hover:shadow-xl transition-all duration-300 border border-blue-100">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-blue-500">
+                        <i data-lucide="smile" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">언어 & 놀이치료</h3>
+                    <p class="text-slate-500 text-sm">놀이를 통해 마음을 열고, 타인과 소통하는 언어 능력을 확장합니다.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">함께 성장할 준비 되셨나요?</h2>
+                <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">망설이지 말고 문의해주세요. 아이의 내일을 위한 가장 따뜻한 상담이 기다리고 있습니다.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-green-500 transition-colors shadow-lg shadow-green-900/20">
+                        042-628-7756 전화걸기
+                    </button>
+                    <button class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-colors">
+                        오시는 길 확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-100 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-slate-900 font-bold text-xl">SSUKSSUK</div>
+            <div class="text-slate-400 text-sm text-center md:text-right">
+                <p>대전 대덕구 계족산로81번길 95, 예성빌딩 5,6층</p>
+                <p class="mt-1">© 2024 SsukSsuk Development Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
