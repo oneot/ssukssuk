@@ -2,7 +2,7 @@ name: Sync SharePoint Gallery
 
 on:
   schedule:
-    - cron: "*/1 * * * *"   # ⏱ 30분마다 (원하면 수정)
+    - cron: "*/10 * * * *"   # ⏱ 30분마다 (원하면 수정)
   workflow_dispatch:        # 수동 실행 가능
 
 jobs:
