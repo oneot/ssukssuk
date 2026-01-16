@@ -106,24 +106,35 @@
     <div id="gallery" class="scroll-mt-28 md:scroll-mt-32 max-w-7xl mx-auto px-6 mb-24 fade-in-up delay-200">
       <div class="relative w-full h-64 md:h-auto md:aspect-[16/8] lg:aspect-[16/7] bg-slate-200 rounded-[2.5rem] overflow-hidden shadow-2xl">
     
-        <!-- 슬라이드 이미지 -->
+        <!-- ✅ 슬라이드 이미지: 2장 구조 -->
         <img
-          id="galleryImage"
+          id="galleryImgCurrent"
           src="./assets/gallery/1.jpeg"
           alt="Center Interior"
-          class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+          class="absolute inset-0 w-full h-full object-cover"
           loading="eager"
           fetchpriority="high"
           decoding="async"
+          style="transform: translateX(0%);"
+        />
+    
+        <img
+          id="galleryImgNext"
+          src="./assets/gallery/1.jpeg"
+          alt="Center Interior"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+          style="transform: translateX(100%);"
         />
     
         <!-- 오버레이 -->
         <div class="absolute inset-0 bg-black/10"></div>
-        <!-- 좌/우 가시성 힌트(그라데이션) -->
-          <div class="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black/25 to-transparent"></div>
-          <div class="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black/25 to-transparent"></div>
     
-        <!-- 좌/우 버튼 -->
+        <!-- 좌/우 가시성 힌트(그라데이션) -->
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black/25 to-transparent"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black/25 to-transparent"></div>
+    
         <!-- 이전 -->
         <button
           type="button"
@@ -133,7 +144,7 @@
         >
           &lt;
         </button>
-        
+    
         <!-- 다음 -->
         <button
           type="button"
@@ -148,24 +159,120 @@
         <div class="absolute bottom-4 md:bottom-10 left-8 md:left-10 text-white">
           <p class="text-sm font-medium opacity-80 mb-1">Play &amp; Learn</p>
           <h3 class="text-2xl font-bold">즐거움이 배움이 되는 공간</h3>
-          <p id="galleryCounter" class="mt-2 text-xs opacity-80">1 / 15</p>
+          <p id="galleryCounter" class="mt-2 text-xs opacity-80"></p>
         </div>
       </div>
     </div>
     
     <script>
-      // ✅ 여기에 사진 URL을 넣으면 됩니다.
-        const slides = [
-          "./assets/gallery/1.jpeg",
-          "./assets/gallery/2.jpeg",
-          "./assets/gallery/3.jpeg",
-          "./assets/gallery/4.jpeg",
-          "./assets/gallery/5.jpeg",
-          "./assets/gallery/6.jpeg",
-        ];
+      // ✅ GitHub에 올린 사진 경로
+      const slides = [
+        "./assets/gallery/1.jpeg",
+        "./assets/gallery/2.jpeg",
+        "./assets/gallery/3.jpeg",
+        "./assets/gallery/4.jpeg",
+        "./assets/gallery/5.jpeg",
+        "./assets/gallery/6.jpeg",
+      ];
     
-    <script>
       let currentIndex = 0;
+    
+      const imgCurrent = document.getElementById("galleryImgCurrent");
+      const imgNext = document.getElementById("galleryImgNext");
+      const prevBtn = document.getElementById("galleryPrev");
+      const nextBtn = document.getElementById("galleryNext");
+      const counterEl = document.getElementById("galleryCounter");
+    
+      let isAnimating = false;
+    
+      function updateCounter() {
+        if (!counterEl) return;
+        counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
+      }
+    
+      // direction: 1 = next(오른쪽->왼쪽), -1 = prev(왼쪽->오른쪽)
+      function slideTo(nextIndex, direction) {
+        if (isAnimating) return;
+        if (!slides || slides.length === 0) return;
+        if (!imgCurrent || !imgNext) return;
+    
+        isAnimating = true;
+    
+        // 다음 이미지 세팅
+        imgNext.src = slides[nextIndex];
+    
+        // 시작 위치 (다음 이미지를 화면 밖에 배치)
+        imgNext.style.transition = "none";
+        imgCurrent.style.transition = "none";
+    
+        imgNext.style.transform = `translateX(${direction * 100}%)`;
+        imgCurrent.style.transform = "translateX(0%)";
+    
+        // 다음 프레임에서 애니메이션 시작
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
+            const duration = "520ms";
+    
+            imgNext.style.transition = `transform ${duration} ${easing}`;
+            imgCurrent.style.transition = `transform ${duration} ${easing}`;
+    
+            imgNext.style.transform = "translateX(0%)";
+            imgCurrent.style.transform = `translateX(${-direction * 100}%)`;
+    
+            const onDone = () => {
+              imgCurrent.removeEventListener("transitionend", onDone);
+    
+              // current에 next 결과 반영
+              imgCurrent.src = slides[nextIndex];
+    
+              // 위치 리셋
+              imgCurrent.style.transition = "none";
+              imgNext.style.transition = "none";
+              imgCurrent.style.transform = "translateX(0%)";
+              imgNext.style.transform = "translateX(100%)";
+    
+              currentIndex = nextIndex;
+              updateCounter();
+              isAnimating = false;
+            };
+    
+            imgCurrent.addEventListener("transitionend", onDone);
+          });
+        });
+      }
+    
+      // 버튼 이벤트
+      prevBtn?.addEventListener("click", () => {
+        const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slideTo(nextIndex, -1);
+      });
+    
+      nextBtn?.addEventListener("click", () => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        slideTo(nextIndex, 1);
+      });
+    
+      // 키보드 지원
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+          slideTo(nextIndex, -1);
+        }
+        if (e.key === "ArrowRight") {
+          const nextIndex = (currentIndex + 1) % slides.length;
+          slideTo(nextIndex, 1);
+        }
+      });
+    
+      // 초기 세팅
+      if (slides.length && imgCurrent && imgNext) {
+        imgCurrent.src = slides[0];
+        imgNext.src = slides[0];
+        updateCounter();
+      }
+    </script>
+          let currentIndex = 0;
     
       const imgCurrent = document.getElementById("galleryImgCurrent");
       const imgNext = document.getElementById("galleryImgNext");
