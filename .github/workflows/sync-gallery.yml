@@ -2,8 +2,11 @@ name: Sync SharePoint Gallery
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # ⏱ 30분마다 (원하면 수정)
-  workflow_dispatch:        # 수동 실행 가능
+    - cron: "*/10 * * * *"   # 10분마다
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   sync:
@@ -19,7 +22,9 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install node-fetch@3
+        run: |
+          npm init -y
+          npm install node-fetch@3
 
       - name: Sync images from SharePoint
         env:
