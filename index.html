@@ -304,89 +304,86 @@
     </div>
   </footer>
 
-  <!-- GALLERY SLIDER SCRIPT (single, correct) -->
+  <!-- GALLERY SLIDER SCRIPT (auto from index.json) -->
   <script>
-    const slides = [
-      "./assets/gallery/1.jpeg",
-      "./assets/gallery/2.jpeg",
-      "./assets/gallery/3.jpeg",
-      "./assets/gallery/4.jpeg",
-      "./assets/gallery/5.jpeg",
-      "./assets/gallery/6.jpeg",
-    ];
-
+    // ✅ slides는 이제 하드코딩이 아니라 index.json에서 로딩
+    let slides = [];
+  
     let currentIndex = 0;
-
+  
     const imgCurrent = document.getElementById("galleryImgCurrent");
     const imgNext = document.getElementById("galleryImgNext");
     const prevBtn = document.getElementById("galleryPrev");
     const nextBtn = document.getElementById("galleryNext");
     const counterEl = document.getElementById("galleryCounter");
-
+  
     let isAnimating = false;
-
+  
     function updateCounter() {
       if (!counterEl) return;
       counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
     }
-
+  
     // direction: 1 = next (right->left), -1 = prev (left->right)
     function slideTo(nextIndex, direction) {
       if (isAnimating) return;
       if (!slides.length) return;
       if (!imgCurrent || !imgNext) return;
-
+  
       isAnimating = true;
       imgNext.src = slides[nextIndex];
-
+  
       imgNext.style.transition = "none";
       imgCurrent.style.transition = "none";
-
+  
       imgNext.style.transform = `translateX(${direction * 100}%)`;
       imgCurrent.style.transform = "translateX(0%)";
-
+  
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
           const duration = "520ms";
-
+  
           imgNext.style.transition = `transform ${duration} ${easing}`;
           imgCurrent.style.transition = `transform ${duration} ${easing}`;
-
+  
           imgNext.style.transform = "translateX(0%)";
           imgCurrent.style.transform = `translateX(${-direction * 100}%)`;
-
+  
           const onDone = () => {
             imgCurrent.removeEventListener("transitionend", onDone);
-
+  
             imgCurrent.src = slides[nextIndex];
-
+  
             imgCurrent.style.transition = "none";
             imgNext.style.transition = "none";
             imgCurrent.style.transform = "translateX(0%)";
             imgNext.style.transform = "translateX(100%)";
-
+  
             currentIndex = nextIndex;
             updateCounter();
             isAnimating = false;
           };
-
+  
           imgCurrent.addEventListener("transitionend", onDone);
         });
       });
     }
-
+  
     prevBtn?.addEventListener("click", () => {
+      if (!slides.length) return;
       const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
       slideTo(nextIndex, -1);
     });
-
+  
     nextBtn?.addEventListener("click", () => {
+      if (!slides.length) return;
       const nextIndex = (currentIndex + 1) % slides.length;
       slideTo(nextIndex, 1);
     });
-
+  
     window.addEventListener("keydown", (e) => {
+      if (!slides.length) return;
       if (e.key === "ArrowLeft") {
         const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
         slideTo(nextIndex, -1);
@@ -396,12 +393,32 @@
         slideTo(nextIndex, 1);
       }
     });
-
-    if (slides.length && imgCurrent && imgNext) {
-      imgCurrent.src = slides[0];
-      imgNext.src = slides[0];
-      updateCounter();
+  
+    // ✅ index.json 로딩해서 slides 구성
+    async function loadSlides() {
+      try {
+        // cache: "no-store"로 최신 파일 목록을 최대한 빨리 반영
+        const res = await fetch("./assets/gallery/index.json", { cache: "no-store" });
+        const files = await res.json();
+  
+        slides = (files || []).map((name) => `./assets/gallery/${name}`).filter(Boolean);
+  
+        if (slides.length && imgCurrent && imgNext) {
+          currentIndex = 0;
+          imgCurrent.src = slides[0];
+          imgNext.src = slides[0];
+          updateCounter();
+        } else {
+          // 파일이 없으면 카운터 숨김(선택)
+          if (counterEl) counterEl.textContent = "";
+        }
+      } catch (err) {
+        console.error("Failed to load gallery index.json:", err);
+        if (counterEl) counterEl.textContent = "";
+      }
     }
+  
+    loadSlides();
   </script>
 </body>
 </html>
