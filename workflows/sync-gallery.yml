@@ -1,0 +1,38 @@
+name: Sync SharePoint Gallery
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # ⏱ 30분마다 (원하면 수정)
+  workflow_dispatch:        # 수동 실행 가능
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install node-fetch@3
+
+      - name: Sync images from SharePoint
+        env:
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          SP_FOLDER_SHARE_URL: ${{ secrets.SP_FOLDER_SHARE_URL }}
+        run: node scripts/sync-gallery.mjs
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/gallery
+          git diff --cached --quiet || git commit -m "chore: sync gallery from SharePoint"
+          git push
