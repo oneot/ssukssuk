@@ -2,7 +2,7 @@ name: Sync SharePoint Gallery
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # 10분마다
+    - cron: "* * * * *"   # 1분마다
   workflow_dispatch:
 
 permissions:
