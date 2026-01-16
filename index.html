@@ -164,41 +164,101 @@
           "./assets/gallery/6.jpeg",
         ];
     
+    <script>
       let currentIndex = 0;
     
-      const imgEl = document.getElementById("galleryImage");
+      const imgCurrent = document.getElementById("galleryImgCurrent");
+      const imgNext = document.getElementById("galleryImgNext");
       const prevBtn = document.getElementById("galleryPrev");
       const nextBtn = document.getElementById("galleryNext");
       const counterEl = document.getElementById("galleryCounter");
     
-      function render() {
-        // 페이드 효과
-        imgEl.style.opacity = "0";
-        setTimeout(() => {
-          imgEl.src = slides[currentIndex];
-          imgEl.style.opacity = "1";
-          counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
-        }, 180);
+      let isAnimating = false;
+    
+      function updateCounter() {
+        if (!counterEl) return;
+        counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
+      }
+    
+      // direction: 1 = next(오른쪽에서 들어옴), -1 = prev(왼쪽에서 들어옴)
+      function slideTo(nextIndex, direction) {
+        if (isAnimating) return;
+        if (!slides || slides.length === 0) return;
+    
+        isAnimating = true;
+    
+        // 다음 이미지 소스 세팅
+        imgNext.src = slides[nextIndex];
+    
+        // 시작 위치 잡기
+        imgNext.style.transition = "none";
+        imgCurrent.style.transition = "none";
+    
+        imgNext.style.transform = `translateX(${direction * 100}%)`;
+        imgCurrent.style.transform = "translateX(0%)";
+    
+        // 다음 프레임에서 트랜지션 적용 후 이동
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
+            const duration = "480ms";
+    
+            imgNext.style.transition = `transform ${duration} ${easing}`;
+            imgCurrent.style.transition = `transform ${duration} ${easing}`;
+    
+            imgNext.style.transform = "translateX(0%)";
+            imgCurrent.style.transform = `translateX(${-direction * 100}%)`;
+    
+            const onDone = () => {
+              imgCurrent.removeEventListener("transitionend", onDone);
+    
+              // 스왑: next를 current로
+              imgCurrent.src = slides[nextIndex];
+    
+              // 위치 리셋
+              imgCurrent.style.transition = "none";
+              imgNext.style.transition = "none";
+              imgCurrent.style.transform = "translateX(0%)";
+              imgNext.style.transform = `translateX(${direction * 100}%)`;
+    
+              currentIndex = nextIndex;
+              updateCounter();
+              isAnimating = false;
+            };
+    
+            imgCurrent.addEventListener("transitionend", onDone);
+          });
+        });
       }
     
       prevBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        render();
+        const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slideTo(nextIndex, -1);
       });
     
       nextBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        render();
+        const nextIndex = (currentIndex + 1) % slides.length;
+        slideTo(nextIndex, 1);
       });
     
       // 키보드(좌/우) 지원
       window.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") prevBtn.click();
-        if (e.key === "ArrowRight") nextBtn.click();
+        if (e.key === "ArrowLeft") {
+          const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+          slideTo(nextIndex, -1);
+        }
+        if (e.key === "ArrowRight") {
+          const nextIndex = (currentIndex + 1) % slides.length;
+          slideTo(nextIndex, 1);
+        }
       });
     
-      // 초기 카운터 표시
-      if (counterEl) counterEl.textContent = `1 / ${slides.length}`;
+      // 초기 세팅
+      if (slides && slides.length) {
+        imgCurrent.src = slides[0];
+        imgNext.src = slides[0];
+        updateCounter();
+      }
     </script>
 
     <section id="programs" class="py-24 bg-white">
