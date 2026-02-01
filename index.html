@@ -568,6 +568,34 @@
     }
 
     loadSlides();
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const galleryContainer = document.querySelector('#gallery'); // 갤러리 컨테이너 선택
+    
+    galleryContainer?.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    galleryContainer?.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+      if (!slides.length) return;
+      const threshold = 50; // 50px 이상 움직여야 인식
+      if (touchStartX - touchEndX > threshold) {
+        // 왼쪽으로 스와이프 -> 다음 사진
+        const nextIndex = (currentIndex + 1) % slides.length;
+        slideTo(nextIndex, 1);
+      } else if (touchEndX - touchStartX > threshold) {
+        // 오른쪽으로 스와이프 -> 이전 사진
+        const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slideTo(nextIndex, -1);
+      }
+    }
   </script>
 </body>
 </html>
