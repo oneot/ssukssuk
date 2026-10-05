@@ -1,601 +1,397 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-smooth">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>쑥쑥아동청소년발달센터 | 대전 송촌동 발달재활 · 주간·방과후활동</title>
+  <meta name="description" content="대전 대덕구 송촌동 쑥쑥아동청소년발달센터. 보건복지부 지정 발달재활서비스·주간·방과후활동서비스 제공기관으로 감각통합·언어·놀이치료와 승마·VR·음악 활동을 1:1 맞춤으로 운영합니다. 상담 0507-1428-3425" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://ssukssuk.org/" />
+
   <!-- Open Graph (카카오톡 / SNS 미리보기) -->
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
   <meta property="og:site_name" content="쑥쑥아동청소년발달센터" />
-  <meta property="og:title" content="쑥쑥아동청소년발달센터" />
-  <meta property="og:description" content="아이들의 작은 움직임이 큰 성장이 되는 곳." />
+  <meta property="og:title" content="쑥쑥아동청소년발달센터 | 아이의 속도로, 한 걸음씩 쑥쑥" />
+  <meta property="og:description" content="발달재활 치료부터 움직임 스튜디오, 승마·VR 체험까지. 대전 송촌동 예성빌딩 5·6층" />
   <meta property="og:url" content="https://ssukssuk.org/" />
-  <meta property="og:image" content="https://ssukssuk.org/assets/kakao-thumb.png" />
+  <meta property="og:image" content="https://ssukssuk.org/assets/img/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="쑥쑥아동청소년발달센터 — 아이의 속도로, 한 걸음씩 쑥쑥" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <title>쑥쑥아동청소년발달센터 | Grow Up, Step by Step.</title>
-  <link rel="icon" href="/assets/logo-small.png" type="image/png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
-  <script>
-    // Tailwind 확장 (CDN에서도 동작)
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Pretendard', 'sans-serif'] },
-          boxShadow: {
-            soft: '0 10px 40px -18px rgba(15, 23, 42, 0.18)',
-            hover: '0 22px 70px -24px rgba(15, 23, 42, 0.28)',
-          }
-        }
-      }
-    }
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" />
+  <link rel="preload" as="image" type="image/webp" href="assets/img/photos/hero-outdoor-1080.webp" imagesrcset="assets/img/photos/hero-outdoor-720.webp 720w, assets/img/photos/hero-outdoor-1080.webp 1080w" imagesizes="(min-width: 1024px) 500px, (min-width: 768px) 440px, 72vw" fetchpriority="high" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "쑥쑥아동청소년발달센터",
+    "alternateName": "SsukSsuk Development Center",
+    "url": "https://ssukssuk.org/",
+    "logo": "https://ssukssuk.org/assets/img/logo.svg",
+    "image": "https://ssukssuk.org/assets/img/og-image.jpg",
+    "telephone": "+82-507-1428-3425",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "계족산로81번길 95, 예성빌딩 5·6층",
+      "addressLocality": "대덕구",
+      "addressRegion": "대전광역시",
+      "addressCountry": "KR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/ssukssuk2023/",
+      "https://www.instagram.com/ssukssuk.activity.center/"
+    ]
+  }
   </script>
-
-  <style>
-    body {
-      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-        "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-      background: #F8FAFC;
-      color: #0f172a;
-      overflow-x: hidden;
-    }
-
-    /* 세련된 스크롤바 */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.04); }
-    ::-webkit-scrollbar-thumb { background: rgba(15, 23, 42, 0.18); border-radius: 6px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.28); }
-
-    /* 파스텔 블롭 배경 (Elevate 스타일) */
-    .pastel-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(1200px 800px at 10% 10%, rgba(34,211,238,.20), transparent 60%),
-                  radial-gradient(1100px 700px at 85% 20%, rgba(34,197,94,.18), transparent 55%),
-                  radial-gradient(1000px 650px at 60% 90%, rgba(249,115,22,.15), transparent 55%),
-                  #ffffff;
-    }
-    .blob {
-      position: absolute;
-      filter: blur(90px);
-      opacity: 0.55;
-      border-radius: 9999px;
-      animation: float 18s infinite ease-in-out alternate;
-      will-change: transform;
-    }
-    .blob-1 { top: -14%; left: -12%; width: 52vw; height: 52vw; background: rgba(99, 102, 241, 0.18); animation-delay: 0s; }
-    .blob-2 { bottom: -16%; right: -14%; width: 52vw; height: 52vw; background: rgba(16, 185, 129, 0.16); animation-delay: -6s; }
-    .blob-3 { top: 35%; left: 45%; width: 34vw; height: 34vw; background: rgba(251, 191, 36, 0.14); animation-delay: -12s; }
-    @keyframes float {
-      0%   { transform: translate(0,0) scale(1); }
-      100% { transform: translate(36px, 54px) scale(1.08); }
-    }
-
-    /* 텍스트 그라데이션 (고급스럽게) */
-    .text-gradient {
-      background: linear-gradient(135deg, #16a34a 0%, #22c55e 40%, #0ea5e9 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* 유리 카드 */
-    .glass {
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.78);
-      box-shadow: 0 10px 40px -18px rgba(15, 23, 42, 0.20);
-    }
-
-    /* 섹션 공통 */
-    .section-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* 은은한 등장 애니메이션 */
-    .fade-in-up { animation: fadeInUp 0.85s cubic-bezier(.22,1,.36,1) forwards; opacity: 0; transform: translateY(16px); }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-    /* Hover lift */
-    .lift {
-      transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s cubic-bezier(.22,1,.36,1), border-color .35s;
-      will-change: transform;
-    }
-    .lift:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 70px -24px rgba(15,23,42,.28);
-      border-color: rgba(34,197,94,.35);
-    }
-
-    /* 버튼 광택 */
-    .btn-shine {
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-shine::after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35), transparent 70%);
-      transform: translateX(-60%);
-      transition: transform .6s cubic-bezier(.22,1,.36,1);
-      pointer-events: none;
-    }
-    .btn-shine:hover::after { transform: translateX(60%); }
-
-    /* 접근성: 모션 줄이기 */
-    @media (prefers-reduced-motion: reduce) {
-      .fade-in-up { animation: none; opacity: 1; transform: none; }
-      .blob { animation: none; }
-      .lift { transition: none; }
-      .btn-shine::after { display: none; }
-    }
-  </style>
 </head>
 
-<body class="antialiased selection:bg-emerald-100 selection:text-emerald-900">
-  <div id="top"></div>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 23V13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M12 14.6C6.6 15.6 2.4 12.2 1.8 6.6c5.8-.4 9.8 2.8 10.2 8z" fill="currentColor"/><path d="M12 12.4c0-5.8 3.6-10.2 10.2-10.4.4 6.2-4 10.6-10.2 10.4z" fill="currentColor"/></symbol>
+      <symbol id="i-sprout-s" viewBox="0 0 24 24"><path d="M12 22v-5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M12 17.4c-3.6.6-6.4-1.6-6.8-5.4 3.8-.2 6.6 1.8 6.8 5.4z" fill="currentColor"/><path d="M12 16.4c0-3.8 2.4-6.6 6.8-6.8.2 4-2.6 7-6.8 6.8z" fill="currentColor"/></symbol>
+      <symbol id="i-seed" viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="5" ry="6.2" fill="currentColor" transform="rotate(-18 12 14)"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.7l1.5 4.2-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4.2 1.5v2.7a2 2 0 0 1-2.2 2C10.9 18.9 5.1 13.1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-shapes" viewBox="0 0 24 24"><circle cx="7" cy="16.5" r="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="12.5" width="8" height="8" rx="1.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3l4.6 7.6H7.4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6.5A3 3 0 0 1 7 3.5h10a3 3 0 0 1 3 3v6.5a3 3 0 0 1-3 3h-6.5L6 20v-4H7a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="8.5" cy="9.8" r="1.2" fill="currentColor"/><circle cx="12" cy="9.8" r="1.2" fill="currentColor"/><circle cx="15.5" cy="9.8" r="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-school" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 9.5V20h14V9.5M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18M5.6 5.6c3 2.6 3 10.2 0 12.8M18.4 5.6c-3 2.6-3 10.2 0 12.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 30 26"><path d="M15 24C6 17.4 2 12.8 2 8.2 2 4.6 4.8 2 8.1 2c2.8 0 5 1.6 6.9 4.2C16.9 3.6 19.1 2 21.9 2 25.2 2 28 4.6 28 8.2c0 4.6-4 9.2-13 15.8z" fill="#EEA6A8"/></symbol>
+      <symbol id="i-doodle" viewBox="0 0 100 100"><path d="M50 96C49 80 50 64 52 50" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M51 58C38 60 22 52 16 34c18-4 33 6 35 24z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M52 48c1-16 13-30 32-32 2 19-12 32-32 32z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M24 38c8 3 16 8 24 16M78 22c-7 6-14 14-22 22" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/></symbol>
+    </defs>
+  </svg>
 
-  <!-- ✅ Pastel background -->
-  <div class="pastel-bg">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
+  <a class="skip" href="#main">본문 바로가기</a>
 
-  <!-- NAV -->
-  <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/20 bg-white/70 backdrop-blur-xl transition-all duration-300">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-6 h-20">
-      <a href="#top" class="flex items-center gap-3 group">
-        <img
-          src="/assets/logo-small.png"
-          alt="쑥쑥아동청소년발달센터 로고"
-          class="w-10 h-10 rounded-full bg-white object-contain shadow-sm border border-slate-100 group-hover:scale-105 transition-transform"
-          decoding="async"
-        />
-        <span class="self-center text-xl font-bold whitespace-nowrap tracking-tight text-slate-900">
-          아동청소년발달센터
-        </span>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="쑥쑥아동청소년발달센터 처음으로">
+        <img src="assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="207" height="42" />
       </a>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="#about">센터 소개</a></li>
+          <li><a href="#programs">프로그램</a></li>
+          <li><a href="#guide">이용 안내</a></li>
+          <li><a href="#moments">쑥쑥의 순간들</a></li>
+          <li><a href="#contact">오시는 길</a></li>
+          <li class="menu-cta"><a class="btn btn--primary btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화 상담 0507-1428-3425</a></li>
+        </ul>
+      </nav>
+      <a class="header-call" href="tel:0507-1428-3425" aria-label="전화 상담 0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>상담 0507-1428-3425</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기"><span></span><span></span></button>
+    </div>
+  </header>
 
-      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <a
-          href="tel:+8250714283425"
-          class="btn-shine text-white bg-slate-900 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-semibold rounded-full text-sm px-6 py-2.5 text-center transition-all hover:shadow-lg hover:-translate-y-0.5 inline-flex items-center justify-center"
-          aria-label="상담 예약하기"
-        >
-          상담 예약하기
-        </a>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow--kr"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>대전 송촌동 · 아동청소년 발달센터</p>
+          <h1 class="hero-title">아이의 속도로,<br />한 걸음씩 <span class="leafline"><span>쑥쑥.</span><svg viewBox="0 0 300 44" preserveAspectRatio="none" aria-hidden="true"><path class="ll-path" pathLength="1" d="M6 31C70 20 146 38 226 26" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/><g class="ll-leaf"><path d="M224 27C233 7 260 0 296 4c-9 21-37 31-72 23z" fill="currentColor"/><path d="M232 24c17-8 36-14 56-17" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".9"/></g></svg></span></h1>
+          <p class="hero-lead">발달재활 치료부터 움직임 스튜디오, 승마·VR 체험까지.<br /> 한 건물 안에서 우리 아이의 성장을 함께 설계합니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn--primary btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>상담 예약하기</a>
+            <a class="btn btn--ghost btn--lg" href="#programs">프로그램 둘러보기<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <ul class="hero-trust">
+            <li><span class="mohw"><img src="assets/img/gov-emblem.png" alt="" width="20" height="20" />보건복지부</span> 사회서비스 제공기관</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>예성빌딩 5·6층</li>
+          </ul>
+        </div>
+
+        <div class="hero-media">
+          <div class="leaf-bg" aria-hidden="true"></div>
+          <figure class="leaf-frame">
+            <picture>
+              <source type="image/webp" srcset="assets/img/photos/hero-outdoor-720.webp 720w, assets/img/photos/hero-outdoor-1080.webp 1080w" sizes="(min-width: 1024px) 500px, (min-width: 768px) 440px, 72vw" />
+              <img src="assets/img/photos/hero-outdoor-1080.jpg" width="1080" height="1260" alt="선생님과 아이들이 손을 잡고 겨울 언덕길을 함께 걸어 내려오는 모습" fetchpriority="high" decoding="async" />
+            </picture>
+          </figure>
+          <div class="hero-circle" aria-hidden="true"><img src="assets/img/photos/horse-800.webp" alt="" width="800" height="600" loading="lazy" decoding="async" /></div>
+          <svg class="hero-doodle" aria-hidden="true"><use href="#i-doodle"/></svg>
+          <svg class="hero-heart" aria-hidden="true"><use href="#i-heart"/></svg>
+          <div class="float-badge fb-1"><span class="badge-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>1:1 맞춤 발달재활<small>언어 · 감각통합 · 인지 · 운동</small></span></div>
+          <div class="float-badge fb-2"><span class="badge-ic"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span><span>승마 · VR · 음악 활동<small>몸으로 배우는 프로그램</small></span></div>
+        </div>
       </div>
+    </section>
 
-      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-        <ul class="flex flex-col p-4 md:p-0 mt-4 font-semibold md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
-          <li><a href="#top" class="block py-2 px-3 text-slate-500 hover:text-emerald-700 md:p-0 transition-colors">About</a></li>
-          <li><a href="#programs" class="block py-2 px-3 text-slate-500 hover:text-emerald-700 md:p-0 transition-colors">Programs</a></li>
-          <li><a href="#contact" class="block py-2 px-3 text-slate-500 hover:text-emerald-700 md:p-0 transition-colors">Contact</a></li>
+    <!-- TRUST -->
+    <section class="trust" aria-label="지정 및 지원 기관">
+      <div class="container">
+        <ul class="trust-list">
+          <li><span class="t-ic"><img src="assets/img/gov-emblem.png" alt="" width="26" height="26" /></span><span><span class="mohw">보건복지부</span> 지정<b>발달재활서비스 제공기관</b></span></li>
+          <li><span class="t-ic"><img src="assets/img/gov-emblem.png" alt="" width="26" height="26" /></span><span><span class="mohw">보건복지부</span> 지정<b>주간·방과후활동서비스 제공기관</b></span></li>
+          <li><span class="t-ic"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg></span><span>교육청<b>치료지원 기관</b></span></li>
+          <li><span class="t-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>1:1 맞춤<b>전문 치료진 · 따뜻한 상담</b></span></li>
         </ul>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- HERO -->
-  <section class="relative h-[100svh] overflow-hidden">
-    <!-- 배경 블랍 -->
-    <div class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-green-100/50 rounded-full blur-3xl opacity-60 translate-x-1/3 -translate-y-1/4"></div>
-    <div class="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-orange-100/50 rounded-full blur-3xl opacity-60 -translate-x-1/3 translate-y-1/4"></div>
-  
-    <!-- ✅ nav(고정) 높이만큼 패딩 주고, 남은 영역에서 중앙정렬 -->
-    <div class="h-full pt-24 pb-10 flex items-center">
-      <div class="max-w-7xl mx-auto px-6 text-center w-full">
-        <div class="fade-in-up">
-          <span class="inline-flex items-center gap-x-1.5 py-1.5 px-4 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 shadow-sm mb-7">
-            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            대전 송촌동 프리미엄 발달센터
-          </span>
-  
-          <!-- ✅ 모바일에서 더 크게 -->
-          <h1 class="font-extrabold tracking-tight text-slate-900 leading-[1.02]
-                     text-[56px] sm:text-7xl lg:text-8xl
-                     mb-6 sm:mb-10 lg:mb-12">
-            Grow Up,<br class="sm:hidden" />
-            <span class="text-gradient">Step by Step.</span>
-          </h1>
-          
-          <!-- ✅ 제목-설명 간격은 h1 mb로만 컨트롤 (p는 mt-0) -->
-          <p class="mt-0 text-slate-500 font-light leading-relaxed mx-auto max-w-2xl
-                    text-base sm:text-lg lg:text-xl">
-            아이들의 작은 움직임이 큰 성장이 되는 곳.<br />
-            발달재활부터 VR체험, 승마까지,<br />
-            쑥쑥에서 내일을 준비하세요.
-          </p>
-        </div>
-  
-        <!-- ✅ 버튼: 모바일에서 무조건 첫 화면에 들어오게 간격 최적화 -->
-        <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center fade-in-up delay-100">
-          <a href="#programs"
-             class="inline-flex justify-center items-center py-4 px-8 text-base font-semibold text-white rounded-2xl
-                    bg-slate-900 hover:bg-slate-800 transition-all hover:shadow-xl hover:-translate-y-1">
-            프로그램 둘러보기
-          </a>
-          <a href="#gallery"
-             class="inline-flex justify-center items-center py-4 px-8 text-base font-semibold text-slate-700
-                    bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all hover:shadow-md">
-            시설 미리보기
-          </a>
-        </div>
-  
-        <!-- ✅ mini trust card: 무조건 가운데 -->
-        <div class="mt-8 sm:mt-10 fade-in-up delay-200 flex justify-center">
-          <div class="glass flex items-center gap-3 rounded-2xl px-5 py-3 text-sm text-slate-600 bg-white/70 border border-white/40 backdrop-blur-xl shadow-sm
-                      w-full max-w-md justify-center">
-            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">✓</span>
-            <span class="whitespace-nowrap">1:1 맞춤 프로그램 · 전문 치료진 · 따뜻한 상담</span>
-          </div>
-        </div>
-  
-      </div>
-    </div>
-  </section>
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>About</p>
+          <h2>한 건물에서 이어지는<br />세 개의 공간</h2>
+          <p>대전 송촌동 예성빌딩 5·6층. 발달재활부터 움직임, 일상과 여가까지 아이의 성장 단계에 맞춰 이어집니다.</p>
+        </header>
 
-  <!-- GALLERY -->
-  <div id="gallery" class="scroll-mt-28 md:scroll-mt-32 max-w-7xl mx-auto px-6 mt-10 mb-24 fade-in-up delay-200">
-    <div class="relative w-full h-64 md:h-auto md:aspect-[16/8] lg:aspect-[16/7] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/60">
-      <!-- subtle glass frame -->
-      <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/25 via-transparent to-black/15"></div>
-
-      <!-- 2-image slider setup -->
-      <img
-        id="galleryImgCurrent"
-        src="./assets/gallery/1.jpeg"
-        alt="Center Interior"
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        style="transform: translateX(0%);"
-      />
-      <img
-        id="galleryImgNext"
-        src="./assets/gallery/1.jpeg"
-        alt="Center Interior"
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        decoding="async"
-        style="transform: translateX(100%);"
-      />
-
-      <!-- overlay (lighter) -->
-      <div class="absolute inset-0 bg-black/10"></div>
-
-      <!-- edge gradients for arrow visibility -->
-      <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/25 to-transparent"></div>
-      <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/25 to-transparent"></div>
-
-      <!-- arrows (modern pill buttons) -->
-      <button
-        type="button"
-        id="galleryPrev"
-        class="group absolute left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full
-               bg-whtie/5 backdrop-blur-sm border border-white/25 text-white
-               flex items-center justify-center
-               hover:bg-black/20 transition-all shadow-lg shadow-black/20"
-        aria-label="이전 사진"
-      >
-        <span class="text-2xl leading-none group-hover:-translate-x-0.5 transition-transform">‹</span>
-      </button>
-      
-      <button
-        type="button"
-        id="galleryNext"
-        class="group absolute right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full
-               bg-white/5 backdrop-blur-sm border border-white/25 text-white
-               flex items-center justify-center
-               hover:bg-black/20 transition-all shadow-lg shadow-black/20"
-        aria-label="다음 사진"
-      >
-        <span class="text-2xl leading-none group-hover:translate-x-0.5 transition-transform">›</span>
-      </button>
-
-      <!-- caption -->
-      <div class="absolute bottom-5 md:bottom-10 left-7 md:left-10 text-white">
-        <p class="text-xs md:text-sm font-semibold opacity-85 mb-1 tracking-wide">Play &amp; Learn</p>
-        <h3 class="text-2xl md:text-3xl font-extrabold drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]">
-          즐거움이 배움이 되는 공간
-        </h3>
-        <p id="galleryCounter" class="mt-2 text-xs opacity-80"></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROGRAMS -->
-  <section id="programs" class="py-24 bg-white/70 backdrop-blur-md border-y border-white/50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-16 md:flex md:justify-between md:items-end">
-        <div class="max-w-2xl">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Curated Programs</h2>
-          <p class="text-slate-500 text-lg">아이의 성향과 발달 속도에 맞춘 1:1 맞춤형 솔루션을 제공합니다.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 md:auto-rows-fr gap-6">
-        <!-- Sensory -->
-        <div class="md:col-span-2 h-full group relative overflow-hidden rounded-[2rem] glass p-8 border border-slate-100 lift flex flex-col">
-          <div class="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-emerald-200/30 blur-3xl"></div>
-          <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-            <span class="w-32 h-32 inline-flex items-center justify-center text-emerald-700 text-6xl">△□○</span>
+        <div class="about-grid">
+          <div class="building" aria-hidden="true" data-reveal>
+            <img class="building-sign" src="assets/img/symbol.svg" alt="" width="132" height="85" />
+            <div class="building-roof"></div>
+            <div class="building-body">
+              <div class="building-row">
+                <div class="room" data-room="6a"><span class="fl">6F</span><b>아동청소년<br />발달센터</b></div>
+                <div class="room" data-room="6b"><span class="fl">6F</span><b>움직임<br />스튜디오</b></div>
+              </div>
+              <div class="room room--wide" data-room="5"><span class="fl">5F</span><b>발달장애인 활동서비스센터</b><span class="room-door"></span></div>
+            </div>
+            <div class="building-ground"><div class="grass"><svg width="16" height="20" style="opacity:0.86;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.47"><use href="#i-sprout"/></svg><svg width="15" height="19" style="opacity:0.81;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="12" height="15" style="opacity:0.65;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="10" height="12" style="opacity:0.85"><use href="#i-sprout"/></svg><svg width="14" height="17" style="opacity:0.95;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="17" style="opacity:0.87"><use href="#i-sprout"/></svg><svg width="21" height="26" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="10" height="12" style="opacity:0.57"><use href="#i-sprout"/></svg><svg width="14" height="17" style="opacity:0.93"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.98;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="17" height="21" style="opacity:0.46"><use href="#i-sprout"/></svg></div></div>
+            <p class="building-addr">대덕구 계족산로81번길 95 · 예성빌딩</p>
           </div>
 
-          <div class="relative z-10 flex flex-col h-full">
-            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-2xl border border-slate-100">🧠</div>
-            <h3 class="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">감각통합 &amp; 인지치료</h3>
-            <p class="text-slate-500 leading-relaxed max-w-md">
-              뇌의 균형 잡힌 발달을 위해 다양한 감각 자극을 조절하는 훈련입니다.
-              <span class="whitespace-nowrap">대근육</span> 활동과 미세 운동을 통해 신체 조절 능력을 키웁니다.
-            </p>
+          <div class="floors">
+            <article class="floor-card" data-room="6a" data-reveal>
+              <span class="floor-no">6F</span>
+              <h3>아동청소년발달센터</h3>
+              <p>발달지연, 지적·자폐성·뇌병변 장애가 있는 아동청소년의 언어, 의사소통, 감각통합, 운동기능, 인지학습 능력을 평가하고 개인별 맞춤 중재를 제공합니다.</p>
+              <ul class="tags">
+                <li><span class="mohw"><img src="assets/img/gov-emblem.png" alt="" width="16" height="16" />보건복지부</span> 지정 발달재활서비스 제공기관</li>
+                <li>교육청 치료지원</li>
+              </ul>
+            </article>
+            <article class="floor-card" data-room="6b" data-reveal>
+              <span class="floor-no">6F</span>
+              <h3>움직임 스튜디오</h3>
+              <p>개인별 특성과 기능 수준을 고려한 적응체육과 스포츠 활동으로 움직임의 즐거움을 배우고, 몸과 마음을 이해하며 세상과 연결되는 힘을 키우는 특수체육 전문 공간입니다.</p>
+              <ul class="tags">
+                <li>적응체육</li>
+                <li>특수체육</li>
+                <li>스포츠 활동</li>
+              </ul>
+            </article>
+            <article class="floor-card" data-room="5" data-reveal>
+              <span class="floor-no">5F</span>
+              <h3>발달장애인 활동서비스센터</h3>
+              <p>개개인의 특성과 선택을 존중한 다양한 프로그램과 그룹 활동으로, 의미 있는 여가와 일상을 통해 사회 적응력과 자립 역량을 키웁니다.</p>
+              <ul class="tags">
+                <li><span class="mohw"><img src="assets/img/gov-emblem.png" alt="" width="16" height="16" />보건복지부</span> 지정 주간·방과후활동서비스 제공기관</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section class="section section--mist programs" id="programs">
+      <div class="container">
+        <header class="section-head section-head--split" data-reveal>
+          <div>
+            <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>Programs</p>
+            <h2>아이의 성향과 속도에 맞춘<br />프로그램</h2>
+          </div>
+          <p>아이마다 다른 발달 속도에 맞춰 1:1로 설계합니다. 치료실 안의 수업부터 몸으로 부딪히며 배우는 활동까지 함께해요.</p>
+        </header>
+
+        <div class="prog-group">
+          <h3 class="group-label"><span class="mono">01 · Therapy</span>발달재활 치료</h3>
+          <div class="prog-therapy">
+            <article class="prog-card prog-card--icon" data-reveal>
+              <span class="prog-icon"><svg class="icon" aria-hidden="true"><use href="#i-shapes"/></svg></span>
+              <h4>감각통합 · 인지치료</h4>
+              <p>뇌의 균형 잡힌 발달을 위해 다양한 감각 자극을 조절하는 훈련입니다. 대근육 활동과 미세 운동을 통해 신체 조절 능력을 키웁니다.</p>
+              <ul class="chips"><li>감각 조절</li><li>대근육</li><li>미세 운동</li><li>인지</li></ul>
+            </article>
+            <article class="prog-card prog-card--icon" data-reveal data-reveal-delay="1">
+              <span class="prog-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+              <h4>언어 · 놀이치료</h4>
+              <p>놀이를 통해 마음을 열고, 타인과 소통하는 언어 능력을 확장합니다.</p>
+              <ul class="chips"><li>언어</li><li>의사소통</li><li>놀이</li><li>정서</li></ul>
+            </article>
           </div>
         </div>
 
-        <!-- Right column: Language + Horse -->
-        <div class="md:col-span-1 md:row-span-2 h-full grid grid-rows-2 gap-6">
-          <div class="h-full group relative overflow-hidden rounded-[2rem] glass p-8 border border-slate-100 lift flex flex-col">
-            <div class="absolute -bottom-24 -left-24 w-56 h-56 rounded-full bg-sky-200/35 blur-3xl"></div>
-            <div class="relative z-10">
-              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-2xl border border-slate-100">🥳</div>
-              <h3 class="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">언어 &amp; 놀이치료</h3>
-              <p class="text-slate-500 leading-relaxed">
-                놀이를 통해 마음을 열고, 타인과 소통하는 언어 능력을 확장합니다.
-              </p>
+        <div class="prog-group">
+          <h3 class="group-label"><span class="mono">02 · Activities</span>몸으로 배우는 활동</h3>
+          <div class="prog-activities">
+            <article class="prog-card prog-card--photo" data-reveal>
+              <div class="prog-photo"><img src="assets/img/photos/horse-800.webp" srcset="assets/img/photos/horse-800.webp 800w, assets/img/photos/horse-1440.webp 1440w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw" width="800" height="600" alt="실내 승마장에서 선생님이 말을 이끌고 아이가 승마하는 모습" loading="lazy" decoding="async" /></div>
+              <div class="prog-body">
+                <h4>승마 활동</h4>
+                <p>말과의 교감을 통해 정서 안정과 자신감을 돕고, 균형감각과 신체 발달을 자연스럽게 지원합니다.</p>
+              </div>
+            </article>
+            <article class="prog-card prog-card--photo" data-reveal data-reveal-delay="1">
+              <div class="prog-photo"><img src="assets/img/photos/vr-800.webp" srcset="assets/img/photos/vr-800.webp 800w, assets/img/photos/vr-1440.webp 1440w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw" width="800" height="600" alt="VR 헤드셋을 쓰고 가상 축구를 즐기며 웃는 아이" loading="lazy" decoding="async" /></div>
+              <div class="prog-body">
+                <h4>VR 활동</h4>
+                <p>가상현실 환경에서 신체 감각과 공간 인식을 자극하며, 몰입형 체험을 통해 집중력과 인지 능력 향상을 돕습니다.</p>
+              </div>
+            </article>
+            <article class="prog-card prog-card--photo" data-reveal data-reveal-delay="2">
+              <div class="prog-photo"><img src="assets/img/photos/music-800.webp" srcset="assets/img/photos/music-800.webp 800w, assets/img/photos/music-1440.webp 1440w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw" width="800" height="600" alt="루돌프 머리띠를 한 아이들이 우쿨렐레와 마이크로 노래하는 모습" loading="lazy" decoding="async" /></div>
+              <div class="prog-body">
+                <h4>음악 · 예술 활동</h4>
+                <p>드럼, 장구, 미술 등 예술적 표현을 통해 정서를 이완하고 자신감을 회복합니다.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIDE -->
+    <section class="section guide" id="guide">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>Step by step</p>
+          <h2>처음이어도 괜찮아요.<br />한 걸음씩 안내해 드릴게요.</h2>
+        </header>
+
+        <div class="guide-grid">
+          <ol class="stem" data-reveal>
+            <li class="stem-step">
+              <span class="stem-node"><svg class="icon" aria-hidden="true"><use href="#i-seed"/></svg></span>
+              <div><span class="mono">Step 01</span><h3>상담 문의</h3><p>전화로 편하게 문의해 주세요. 아이의 이야기를 먼저 듣고 방문 일정을 함께 잡습니다.</p></div>
+            </li>
+            <li class="stem-step">
+              <span class="stem-node"><svg class="icon" aria-hidden="true"><use href="#i-sprout-s"/></svg></span>
+              <div><span class="mono">Step 02</span><h3>초기 상담 · 발달 평가</h3><p>보호자 상담과 함께 아이의 언어, 감각, 운동, 인지 발달을 꼼꼼히 살펴봅니다.</p></div>
+            </li>
+            <li class="stem-step">
+              <span class="stem-node"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span>
+              <div><span class="mono">Step 03</span><h3>1:1 맞춤 프로그램</h3><p>평가 결과와 아이의 성향에 맞춰 치료와 활동 계획을 세웁니다.</p></div>
+            </li>
+            <li class="stem-step">
+              <span class="stem-node"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span>
+              <div><span class="mono">Step 04</span><h3>함께 나누는 성장</h3><p>수업 후 보호자와 과정을 나누고, 아이의 변화에 맞춰 다음 걸음을 준비합니다.</p></div>
+            </li>
+          </ol>
+
+          <aside class="support" data-reveal data-reveal-delay="1" aria-labelledby="support-title">
+            <h3 id="support-title">이용할 수 있는 지원 제도</h3>
+            <ul class="support-list">
+              <li><span class="s-ic"><img src="assets/img/gov-emblem.png" alt="" width="24" height="24" /></span><span><span class="s-org">보건복지부</span><b>발달재활서비스 바우처</b><small>6F 아동청소년발달센터</small></span></li>
+              <li><span class="s-ic"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg></span><span><span class="s-org">교육청</span><b>치료지원</b><small>6F 아동청소년발달센터</small></span></li>
+              <li><span class="s-ic"><img src="assets/img/gov-emblem.png" alt="" width="24" height="24" /></span><span><span class="s-org">보건복지부</span><b>주간·방과후활동서비스</b><small>5F 발달장애인 활동서비스센터</small></span></li>
+              <li><span class="s-ic"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><span><span class="s-org">스포츠 강좌</span><b>스포츠바우처</b><small>적응체육 · 스포츠 활동</small></span></li>
+            </ul>
+            <p class="support-note"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg><span>이용 대상·자격·본인부담금은 제도마다 달라요. 상담 때 자세히 안내해 드립니다.</span></p>
+            <p class="support-note"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>운영시간과 상담 가능 시간은 전화 또는 네이버 지도에서 확인하실 수 있어요.</span></p>
+            <a class="btn btn--primary btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화로 상담 예약</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOMENTS (collage gallery) -->
+    <section class="section moments" id="moments">
+      <div class="container">
+        <div class="collage">
+          <header class="collage-head" data-reveal>
+            <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>Moments</p>
+            <h2>쑥쑥의 순간들</h2>
+            <p class="serif">Little moments, big growth.</p>
+            <p class="hint">사진을 누르면 크게 볼 수 있어요.</p>
+          </header>
+          <a class="tile t-music" href="assets/img/photos/music-1440.webp" data-lightbox data-caption="크리스마스 음악 발표회"><img src="assets/img/photos/music-800.webp" width="800" height="600" alt="루돌프 머리띠를 한 아이들이 우쿨렐레를 들고 마이크로 노래하는 크리스마스 발표회" loading="lazy" decoding="async" /></a>
+          <a class="tile t-horse" href="assets/img/photos/horse-1440.webp" data-lightbox data-caption="실내 승마장 승마 활동"><img src="assets/img/photos/horse-800.webp" width="800" height="600" alt="실내 승마장에서 선생님이 말을 이끌고 아이가 승마하는 모습" loading="lazy" decoding="async" /></a>
+          <a class="tile t-party" href="assets/img/photos/party-1440.webp" data-lightbox data-caption="다 함께 크리스마스 파티"><img src="assets/img/photos/party-800.webp" width="800" height="451" alt="산타와 함께한 크리스마스 파티에서 아이들과 가족들이 즐거워하는 모습" loading="lazy" decoding="async" /></a>
+          <a class="tile t-vr" href="assets/img/photos/vr-1440.webp" data-lightbox data-caption="VR 스포츠 체험"><img src="assets/img/photos/vr-800.webp" width="800" height="600" alt="VR 헤드셋을 쓰고 가상 축구를 즐기며 웃는 아이" loading="lazy" decoding="async" /></a>
+          <a class="tile t-simulator" href="assets/img/photos/simulator-1440.webp" data-lightbox data-caption="승마 시뮬레이터 체험실"><img src="assets/img/photos/simulator-800.webp" width="800" height="600" alt="말 그림 벽화가 있는 체험실에서 선생님과 함께 승마 시뮬레이터를 타는 아이" loading="lazy" decoding="async" /></a>
+          <a class="tile t-digital" href="assets/img/photos/digital-1440.webp" data-lightbox data-caption="레이싱 휠로 즐기는 디지털 놀이"><img src="assets/img/photos/digital-800.webp" width="800" height="600" alt="레이싱 휠과 게임 패드로 화면 속 게임을 함께 즐기는 아이들" loading="lazy" decoding="async" /></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="hands" aria-hidden="true"><svg><use href="#i-heart"/></svg></div>
+        <div class="contact-card" data-reveal>
+          <div class="contact-copy">
+            <p class="eyebrow eyebrow--light"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>Contact</p>
+            <h2>함께 성장할 준비,<br />되셨나요?</h2>
+            <p>망설이지 말고 문의해 주세요. 아이의 내일을 위한 가장 따뜻한 상담이 기다리고 있습니다.</p>
+            <div class="contact-actions">
+              <a class="btn btn--light btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>0507-1428-3425</a>
+              <a class="btn btn--outline-light btn--lg" href="https://naver.me/GOPrnvrX" target="_blank" rel="noopener noreferrer">네이버 지도 길찾기<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
             </div>
           </div>
-
-          <div class="h-full group relative overflow-hidden rounded-[2rem] glass p-8 border border-slate-100 lift flex flex-col">
-            <div class="absolute -top-24 -right-24 w-56 h-56 rounded-full bg-amber-200/30 blur-3xl"></div>
-            <div class="relative z-10">
-              <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-2xl border border-slate-100">🐎</div>
-              <h3 class="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">승마 활동</h3>
-              <p class="text-slate-500 leading-relaxed">
-                말과의 교감을 통해 정서 안정과 자신감을 돕고, 균형감각과 신체 발달을 자연스럽게 지원합니다.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- VR -->
-        <div class="h-full group relative overflow-hidden rounded-[2rem] glass p-8 border border-slate-100 lift flex flex-col">
-          <div class="absolute -top-28 -left-28 w-64 h-64 rounded-full bg-fuchsia-200/22 blur-3xl"></div>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-2xl border border-slate-100">🎮</div>
-            <h3 class="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">VR 활동</h3>
-            <p class="text-slate-500 leading-relaxed">
-              가상현실 환경에서 신체 감각과 공간 인식을 자극하며, 몰입형 체험을 통해 집중력과 인지 능력 향상을 돕습니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- Music -->
-        <div class="h-full group relative overflow-hidden rounded-[2rem] glass p-8 border border-slate-100 lift flex flex-col">
-          <div class="absolute -bottom-28 -right-28 w-64 h-64 rounded-full bg-emerald-200/25 blur-3xl"></div>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-2xl border border-slate-100">🥁</div>
-            <h3 class="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">음악 &amp; 예술 활동</h3>
-            <p class="text-slate-500 leading-relaxed">
-              드럼, 장구, 미술 등 예술적 표현을 통해 정서를 이완하고 자신감을 회복합니다.
-            </p>
-          </div>
+          <dl class="contact-info">
+            <div><dt><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>주소</dt><dd>대전광역시 대덕구 계족산로81번길 95<br />예성빌딩 5·6층 <span>(송촌동 449-3)</span></dd></div>
+            <div><dt><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화</dt><dd><a href="tel:0507-1428-3425">0507-1428-3425</a></dd></div>
+            <div><dt><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>운영시간</dt><dd>전화 또는 네이버 지도에서 확인해 주세요</dd></div>
+            <div><dt><svg class="icon" aria-hidden="true"><use href="#i-insta"/></svg>인스타그램</dt><dd><a href="https://www.instagram.com/ssukssuk2023/" target="_blank" rel="noopener noreferrer">@ssukssuk2023</a><br /><a href="https://www.instagram.com/ssukssuk.activity.center/" target="_blank" rel="noopener noreferrer">@ssukssuk.activity.center</a></dd></div>
+          </dl>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="py-24 px-6">
-    <div class="max-w-5xl mx-auto rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden bg-slate-900 shadow-2xl">
-      <!-- elegant gradient -->
-      <div class="absolute inset-0 opacity-90 bg-[radial-gradient(600px_400px_at_20%_20%,rgba(34,197,94,.26),transparent_60%),radial-gradient(600px_420px_at_85%_30%,rgba(14,165,233,.22),transparent_55%),radial-gradient(520px_420px_at_55%_95%,rgba(249,115,22,.18),transparent_60%)]"></div>
-      <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-
-      <div class="relative z-10">
-        <h2 class="text-[28px] leading-snug md:text-5xl md:leading-tight font-extrabold text-white mb-5 tracking-tight">
-          함께 성장할 준비 되셨나요?
-        </h2>
-
-        <p class="text-slate-200/90 text-base leading-relaxed md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto">
-          망설이지 말고 문의해주세요. 아이의 내일을 위한 가장 따뜻한 상담이 기다리고 있습니다.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="tel:+8250714283425"
-            class="btn-shine bg-emerald-500 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-900/20 inline-flex items-center justify-center"
-            aria-label="상담 예약하기"
-          >
-            상담 예약하기
-          </a>
-          <a
-            href="https://naver.me/GOPrnvrX"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white/20 transition-colors inline-flex items-center justify-center"
-            aria-label="네이버 지도에서 오시는 길 확인"
-          >
-            오시는 길
-          </a>
-        </div>
-
-        <div class="mt-8 text-xs text-white/70">
-          운영시간/상담 안내는 전화 또는 네이버 지도로 확인 가능합니다.
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer class="bg-white/80 backdrop-blur-md border-t border-white/60 py-12 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex items-center">
-        <img
-          src="/assets/logo-big.png"
-          alt="쑥쑥아동청소년발달센터"
-          class="h-10 md:h-12 object-contain"
-          loading="lazy"
-          decoding="async"
-        />
+  <footer class="site-footer">
+    <div class="grass footer-grass" aria-hidden="true"><svg width="38" height="48" style="opacity:0.93;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.7;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="32" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.5"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="18" height="22" style="opacity:0.78"><use href="#i-sprout"/></svg><svg width="38" height="48" style="opacity:0.81;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="24" height="30" style="opacity:0.79;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.48"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.78;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="32" height="40" style="opacity:0.69;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="42" height="53" style="opacity:0.58"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.81"><use href="#i-sprout"/></svg><svg width="30" height="37" style="opacity:0.67;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.84"><use href="#i-sprout"/></svg><svg width="27" height="34" style="opacity:0.73"><use href="#i-sprout"/></svg><svg width="45" height="56" style="opacity:0.87"><use href="#i-sprout"/></svg><svg width="30" height="38" style="opacity:0.66;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.57;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="18" height="23" style="opacity:0.71;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="36" height="45" style="opacity:0.68;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="32" style="opacity:0.88"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="37" height="46" style="opacity:0.87"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.84"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.89"><use href="#i-sprout"/></svg><svg width="44" height="55" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.68"><use href="#i-sprout"/></svg><svg width="36" height="45" style="opacity:0.68"><use href="#i-sprout"/></svg><svg width="30" height="37" style="opacity:0.93;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="57" style="opacity:0.62;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="33" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="58" style="opacity:0.8"><use href="#i-sprout"/></svg><svg width="23" height="29" style="opacity:0.57"><use href="#i-sprout"/></svg><svg width="33" height="41" style="opacity:0.91"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.5;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.46"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.52;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="45" height="56" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="23" height="29" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.85"><use href="#i-sprout"/></svg><svg width="44" height="55" style="opacity:0.56;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="40" height="50" style="opacity:0.78"><use href="#i-sprout"/></svg><svg width="21" height="26" style="opacity:0.51;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="29" height="36" style="opacity:0.58;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="29" height="36" style="opacity:0.68;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="41" height="51" style="opacity:0.61"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.6;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="33" style="opacity:0.86"><use href="#i-sprout"/></svg><svg width="37" height="46" style="opacity:0.7"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.61;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.5"><use href="#i-sprout"/></svg><svg width="38" height="48" style="opacity:0.99;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="42" height="53" style="opacity:0.77"><use href="#i-sprout"/></svg><svg width="18" height="22" style="opacity:0.96"><use href="#i-sprout"/></svg></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="178" height="36" loading="lazy" />
+        <p class="serif">Grow up, step by step.</p>
       </div>
-
-      <div class="text-slate-500 text-sm text-center md:text-right">
-        <p>대전 대덕구 계족산로81번길 95, 예성빌딩 5,6층</p>
-        <p class="mt-1 text-slate-400">© 2026 SsukSsuk Development Center. All rights reserved.</p>
+      <div class="footer-info">
+        <p>대전광역시 대덕구 계족산로81번길 95, 예성빌딩 5·6층</p>
+        <p>T. <a href="tel:0507-1428-3425">0507-1428-3425</a></p>
+        <p><span class="mohw"><img src="assets/img/gov-emblem.png" alt="" width="16" height="16" />보건복지부</span> 사회서비스 제공기관</p>
+        <p class="footer-copy">© 2026 SsukSsuk Development Center. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- GALLERY SLIDER SCRIPT (auto from index.json) -->
-  <script>
-    // ✅ slides는 이제 하드코딩이 아니라 index.json에서 로딩
-    let slides = [];
-    let currentIndex = 0;
+  <!-- Mobile quick actions -->
+  <div class="mobile-cta">
+    <a class="btn btn--primary" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화 상담</a>
+    <a class="btn btn--ghost" href="https://naver.me/GOPrnvrX" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>길찾기</a>
+  </div>
 
-    const imgCurrent = document.getElementById("galleryImgCurrent");
-    const imgNext = document.getElementById("galleryImgNext");
-    const prevBtn = document.getElementById("galleryPrev");
-    const nextBtn = document.getElementById("galleryNext");
-    const counterEl = document.getElementById("galleryCounter");
+  <!-- Gallery lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="사진 크게 보기">
+    <figure>
+      <img src="data:," alt="" />
+      <figcaption><span class="lb-caption"></span><span class="lb-count mono"></span></figcaption>
+    </figure>
+    <button class="lb-btn lb-prev" type="button" aria-label="이전 사진"><svg class="icon" aria-hidden="true"><use href="#i-chev-left"/></svg></button>
+    <button class="lb-btn lb-next" type="button" aria-label="다음 사진"><svg class="icon" aria-hidden="true"><use href="#i-chev-right"/></svg></button>
+    <button class="lb-close" type="button" aria-label="닫기"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </dialog>
 
-    let isAnimating = false;
-
-    function updateCounter() {
-      if (!counterEl) return;
-      counterEl.textContent = slides.length ? `${currentIndex + 1} / ${slides.length}` : "";
-    }
-
-    // direction: 1 = next (right->left), -1 = prev (left->right)
-    function slideTo(nextIndex, direction) {
-      if (isAnimating) return;
-      if (!slides.length) return;
-      if (!imgCurrent || !imgNext) return;
-
-      isAnimating = true;
-      imgNext.src = slides[nextIndex];
-
-      imgNext.style.transition = "none";
-      imgCurrent.style.transition = "none";
-
-      imgNext.style.transform = `translateX(${direction * 100}%)`;
-      imgCurrent.style.transform = "translateX(0%)";
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
-          const duration = "520ms";
-
-          imgNext.style.transition = `transform ${duration} ${easing}`;
-          imgCurrent.style.transition = `transform ${duration} ${easing}`;
-
-          imgNext.style.transform = "translateX(0%)";
-          imgCurrent.style.transform = `translateX(${-direction * 100}%)`;
-
-          const onDone = () => {
-            imgCurrent.removeEventListener("transitionend", onDone);
-
-            imgCurrent.src = slides[nextIndex];
-
-            imgCurrent.style.transition = "none";
-            imgNext.style.transition = "none";
-            imgCurrent.style.transform = "translateX(0%)";
-            imgNext.style.transform = "translateX(100%)";
-
-            currentIndex = nextIndex;
-            updateCounter();
-            isAnimating = false;
-          };
-
-          imgCurrent.addEventListener("transitionend", onDone);
-        });
-      });
-    }
-
-    prevBtn?.addEventListener("click", () => {
-      if (!slides.length) return;
-      const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
-      slideTo(nextIndex, -1);
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      if (!slides.length) return;
-      const nextIndex = (currentIndex + 1) % slides.length;
-      slideTo(nextIndex, 1);
-    });
-
-    window.addEventListener("keydown", (e) => {
-      if (!slides.length) return;
-      if (e.key === "ArrowLeft") {
-        const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
-        slideTo(nextIndex, -1);
-      }
-      if (e.key === "ArrowRight") {
-        const nextIndex = (currentIndex + 1) % slides.length;
-        slideTo(nextIndex, 1);
-      }
-    });
-
-    // ✅ index.json 로딩해서 slides 구성
-    async function loadSlides() {
-      try {
-        const res = await fetch("./assets/gallery/index.json", { cache: "no-store" });
-        const files = await res.json();
-
-        slides = (files || []).map((name) => `./assets/gallery/${name}`).filter(Boolean);
-
-        if (slides.length && imgCurrent && imgNext) {
-          currentIndex = 0;
-          imgCurrent.src = slides[0];
-          imgNext.src = slides[0];
-          updateCounter();
-        } else {
-          updateCounter();
-        }
-      } catch (err) {
-        console.error("Failed to load gallery index.json:", err);
-        updateCounter();
-      }
-    }
-
-    loadSlides();
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    const galleryContainer = document.querySelector('#gallery'); // 갤러리 컨테이너 선택
-    
-    galleryContainer?.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-    
-    galleryContainer?.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, {passive: true});
-    
-    function handleSwipe() {
-      if (!slides.length) return;
-      const threshold = 50; // 50px 이상 움직여야 인식
-      if (touchStartX - touchEndX > threshold) {
-        // 왼쪽으로 스와이프 -> 다음 사진
-        const nextIndex = (currentIndex + 1) % slides.length;
-        slideTo(nextIndex, 1);
-      } else if (touchEndX - touchStartX > threshold) {
-        // 오른쪽으로 스와이프 -> 이전 사진
-        const nextIndex = (currentIndex - 1 + slides.length) % slides.length;
-        slideTo(nextIndex, -1);
-      }
-    }
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
