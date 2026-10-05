@@ -204,10 +204,10 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 .building-roof { height: 14px; margin: 0 -12px; border-radius: 12px 12px 4px 4px; background: var(--sprout); }
 .building-body { display: grid; gap: 10px; padding: 10px; border: 1.5px solid var(--line-2); border-top: 0; border-radius: 0 0 22px 22px; background: #fff; }
 .building-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-/* Each space has its own shade of green: 6F 발달센터 = logo green, 6F 움직임 스튜디오 = leaf, 5F 활동서비스센터 = sage */
-[data-room="6a"] { --space: #4f7e52; --space-ink: #3f6542; --space-tint: #e7efe7; }
-[data-room="6b"] { --space: #577b41; --space-ink: #466234; --space-tint: #ebf0e4; }
-[data-room="5"] { --space: #48775f; --space-ink: #3a5f4c; --space-tint: #e4ede8; }
+/* Each space has its own color: 6F 발달센터 = logo green, 6F 움직임 스튜디오 = leaf green, 5F 활동서비스센터 = logo pink */
+[data-room="6a"] { --space: #4f7e52; --space-ink: #3f6542; --space-tint: #e7efe7; --space-on: #fff; }
+[data-room="6b"] { --space: #577b41; --space-ink: #466234; --space-tint: #ebf0e4; --space-on: #fff; }
+[data-room="5"] { --space: #eea6a8; --space-ink: #9c4f57; --space-tint: #fcefef; --space-on: #5a2a2f; }
 .room {
   display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 152px; padding: 18px 18px 20px;
   border-radius: 16px; background: var(--space-tint); border: 1.5px solid transparent;
@@ -216,7 +216,7 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 .room .fl { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; color: var(--space-ink); transition: color .35s var(--ease); }
 .room b { font-size: 17px; line-height: 1.35; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; transition: color .35s var(--ease); }
 .room--wide { grid-column: 1 / -1; min-height: 128px; }
-.room-door { width: 46px; height: 26px; margin: 4px auto -10px; border-radius: 10px 10px 0 0; background: rgba(31, 59, 38, .12); }
+.room-door { width: 46px; height: 26px; margin: 4px auto -10px; border-radius: 10px 10px 0 0; background: rgba(156, 79, 87, .16); }
 .building-ground { position: relative; margin: 0 -16px; }
 .building-ground::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--sprout); opacity: .35; }
 .building-ground .grass { height: 34px; padding: 0 6px; }
@@ -224,10 +224,10 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 /* Hovering a room on the left or a floor card on the right highlights both */
 .about-grid:has([data-room="6a"]:hover, [data-room="6a"]:focus-within) :is(.room[data-room="6a"], .floor-card[data-room="6a"] .floor-no),
 .about-grid:has([data-room="6b"]:hover, [data-room="6b"]:focus-within) :is(.room[data-room="6b"], .floor-card[data-room="6b"] .floor-no),
-.about-grid:has([data-room="5"]:hover, [data-room="5"]:focus-within) :is(.room[data-room="5"], .floor-card[data-room="5"] .floor-no) { background: var(--space); border-color: var(--space); color: #fff; }
+.about-grid:has([data-room="5"]:hover, [data-room="5"]:focus-within) :is(.room[data-room="5"], .floor-card[data-room="5"] .floor-no) { background: var(--space); border-color: var(--space); color: var(--space-on); }
 .about-grid:has([data-room="6a"]:hover, [data-room="6a"]:focus-within) .room[data-room="6a"] *,
 .about-grid:has([data-room="6b"]:hover, [data-room="6b"]:focus-within) .room[data-room="6b"] *,
-.about-grid:has([data-room="5"]:hover, [data-room="5"]:focus-within) .room[data-room="5"] * { color: #fff; }
+.about-grid:has([data-room="5"]:hover, [data-room="5"]:focus-within) .room[data-room="5"] * { color: var(--space-on); }
 
 .floors { display: flex; flex-direction: column; }
 .floor-card { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 8px 22px; padding: 30px 0; border-top: 1px solid var(--line); }
