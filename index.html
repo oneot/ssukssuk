@@ -64,6 +64,7 @@
     <defs>
       <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 23V13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M12 14.6C6.6 15.6 2.4 12.2 1.8 6.6c5.8-.4 9.8 2.8 10.2 8z" fill="currentColor"/><path d="M12 12.4c0-5.8 3.6-10.2 10.2-10.4.4 6.2-4 10.6-10.2 10.4z" fill="currentColor"/></symbol>
       <symbol id="i-sprout-s" viewBox="0 0 24 24"><path d="M12 22v-5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M12 17.4c-3.6.6-6.4-1.6-6.8-5.4 3.8-.2 6.6 1.8 6.8 5.4z" fill="currentColor"/><path d="M12 16.4c0-3.8 2.4-6.6 6.8-6.8.2 4-2.6 7-6.8 6.8z" fill="currentColor"/></symbol>
+      <symbol id="i-bud" viewBox="0 0 24 24"><path d="M12 23V11.6" stroke="#4f7e52" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M12 18.4c-3.6.6-6.4-1.6-6.8-5.4 3.8-.2 6.6 1.8 6.8 5.4z" fill="#4f7e52"/><path d="M12 17c0-3.6 2.4-6.2 6.6-6.4.2 3.8-2.4 6.6-6.6 6.4z" fill="#4f7e52"/><path d="M12 11.2C8.4 8.7 6.8 6.9 6.8 5a2.6 2.6 0 0 1 5.2-1 2.6 2.6 0 0 1 5.2 1c0 1.9-1.6 3.7-5.2 6.2z" fill="#eea6a8"/></symbol>
       <symbol id="i-seed" viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="5" ry="6.2" fill="currentColor" transform="rotate(-18 12 14)"/></symbol>
       <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.7l1.5 4.2-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4.2 1.5v2.7a2 2 0 0 1-2.2 2C10.9 18.9 5.1 13.1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -91,22 +92,24 @@
 
   <!-- HEADER -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="쑥쑥아동청소년발달센터 처음으로">
-        <img src="assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="207" height="42" />
-      </a>
-      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
-        <ul>
-          <li><a href="#about">센터 소개</a></li>
-          <li><a href="#programs">프로그램</a></li>
-          <li><a href="#guide">이용 안내</a></li>
-          <li><a href="#moments">쑥쑥의 순간들</a></li>
-          <li><a href="#contact">오시는 길</a></li>
-          <li class="menu-cta"><a class="btn btn--primary btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화 상담 0507-1428-3425</a></li>
-        </ul>
-      </nav>
-      <a class="header-call" href="tel:0507-1428-3425" aria-label="전화 상담 0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>상담 0507-1428-3425</span></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기"><span></span><span></span></button>
+    <div class="container">
+      <div class="header-bar glass glass--strong">
+        <a class="brand" href="#top" aria-label="쑥쑥아동청소년발달센터 처음으로">
+          <img src="assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="207" height="42" />
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+          <ul>
+            <li><a href="#about">센터 소개</a></li>
+            <li><a href="#programs">프로그램</a></li>
+            <li><a href="#guide">이용 안내</a></li>
+            <li><a href="#moments">쑥쑥의 순간들</a></li>
+            <li><a href="#contact">오시는 길</a></li>
+            <li class="menu-cta"><a class="btn btn--primary btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화 상담 0507-1428-3425</a></li>
+          </ul>
+        </nav>
+        <a class="header-call" href="tel:0507-1428-3425" aria-label="전화 상담 0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>상담 0507-1428-3425</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기"><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
@@ -116,7 +119,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow eyebrow--kr"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>대전 송촌동 · 아동청소년 발달센터</p>
-          <h1 class="hero-title">아이의 속도로,<br />한 걸음씩 <span class="leafline"><span>쑥쑥.</span><svg viewBox="0 0 300 44" preserveAspectRatio="none" aria-hidden="true"><path class="ll-path" pathLength="1" d="M6 31C70 20 146 38 226 26" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/><g class="ll-leaf"><path d="M224 27C233 7 260 0 296 4c-9 21-37 31-72 23z" fill="currentColor"/><path d="M232 24c17-8 36-14 56-17" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".9"/></g></svg></span></h1>
+          <h1 class="hero-title">아이의 속도로,<br />한 걸음씩 <span class="leafline"><span>쑥쑥<span class="dot">.</span></span><svg viewBox="0 0 300 44" preserveAspectRatio="none" aria-hidden="true"><path class="ll-path" pathLength="1" d="M6 31C70 20 146 38 226 26" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/><g class="ll-leaf"><path d="M224 27C233 7 260 0 296 4c-9 21-37 31-72 23z" fill="currentColor"/><path d="M232 24c17-8 36-14 56-17" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".9"/></g></svg></span></h1>
           <p class="hero-lead">발달재활 치료부터 움직임 스튜디오, 승마·VR 체험까지.<br /> 한 건물 안에서 우리 아이의 성장을 함께 설계합니다.</p>
           <div class="hero-actions">
             <a class="btn btn--primary btn--lg" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>상담 예약하기</a>
@@ -139,8 +142,8 @@
           <div class="hero-circle" aria-hidden="true"><img src="assets/img/photos/horse-800.webp" alt="" width="800" height="600" loading="lazy" decoding="async" /></div>
           <svg class="hero-doodle" aria-hidden="true"><use href="#i-doodle"/></svg>
           <svg class="hero-heart" aria-hidden="true"><use href="#i-heart"/></svg>
-          <div class="float-badge fb-1"><span class="badge-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>1:1 맞춤 발달재활<small>언어 · 감각통합 · 인지 · 운동</small></span></div>
-          <div class="float-badge fb-2"><span class="badge-ic"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span><span>승마 · VR · 음악 활동<small>몸으로 배우는 프로그램</small></span></div>
+          <div class="float-badge fb-1 glass glass--strong"><span class="badge-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>1:1 맞춤 발달재활<small>언어 · 감각통합 · 인지 · 운동</small></span></div>
+          <div class="float-badge fb-2 glass glass--strong"><span class="badge-ic badge-ic--pink"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span><span>승마 · VR · 음악 활동<small>몸으로 배우는 프로그램</small></span></div>
         </div>
       </div>
     </section>
@@ -148,11 +151,11 @@
     <!-- TRUST -->
     <section class="trust" aria-label="지정 및 지원 기관">
       <div class="container">
-        <ul class="trust-list">
+        <ul class="trust-list glass glass--strong">
           <li><span class="t-ic"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span><span>보건복지부 지정<b>발달재활서비스 제공기관</b></span></li>
-          <li><span class="t-ic"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><span>보건복지부 지정<b>주간·방과후활동서비스 제공기관</b></span></li>
+          <li><span class="t-ic t-ic--pink"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><span>보건복지부 지정<b>주간·방과후활동서비스 제공기관</b></span></li>
           <li><span class="t-ic"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg></span><span>대전광역시교육청<b>치료지원 기관</b></span></li>
-          <li><span class="t-ic"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>1:1 맞춤<b>전문 치료진 · 따뜻한 상담</b></span></li>
+          <li><span class="t-ic t-ic--pink"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>1:1 맞춤<b>전문 치료진 · 따뜻한 상담</b></span></li>
         </ul>
       </div>
     </section>
@@ -170,14 +173,14 @@
           <div class="building" aria-hidden="true" data-reveal>
             <img class="building-sign" src="assets/img/symbol.svg" alt="" width="132" height="85" />
             <div class="building-roof"></div>
-            <div class="building-body">
+            <div class="building-body glass">
               <div class="building-row">
                 <div class="room" data-room="6a"><span class="fl">6F</span><b>아동청소년<br />발달센터</b></div>
                 <div class="room" data-room="6b"><span class="fl">6F</span><b>움직임<br />스튜디오</b></div>
               </div>
               <div class="room room--wide" data-room="5"><span class="fl">5F</span><b>발달장애인 활동서비스센터</b><span class="room-door"></span></div>
             </div>
-            <div class="building-ground"><div class="grass"><svg width="16" height="20" style="opacity:0.86;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.47"><use href="#i-sprout"/></svg><svg width="15" height="19" style="opacity:0.81;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="12" height="15" style="opacity:0.65;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="10" height="12" style="opacity:0.85"><use href="#i-sprout"/></svg><svg width="14" height="17" style="opacity:0.95;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="17" style="opacity:0.87"><use href="#i-sprout"/></svg><svg width="21" height="26" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="10" height="12" style="opacity:0.57"><use href="#i-sprout"/></svg><svg width="14" height="17" style="opacity:0.93"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.98;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="17" height="21" style="opacity:0.46"><use href="#i-sprout"/></svg></div></div>
+            <div class="building-ground"><div class="grass"><svg width="16" height="20" style="opacity:0.86;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.47"><use href="#i-sprout"/></svg><svg width="15" height="19" style="opacity:0.81;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="12" height="15" style="opacity:0.65;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24"><use href="#i-bud"/></svg><svg width="12" height="15" style="opacity:0.77"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.67"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.54;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="13" height="16" style="opacity:0.79"><use href="#i-sprout"/></svg><svg width="13" height="16" style="opacity:0.45;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.88;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24"><use href="#i-bud"/></svg><svg width="17" height="21" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="14" height="18" style="opacity:0.98;transform:scaleX(-1)"><use href="#i-sprout"/></svg></div></div>
             <p class="building-addr">대덕구 계족산로81번길 95 · 예성빌딩</p>
           </div>
 
@@ -215,7 +218,7 @@
     </section>
 
     <!-- PROGRAMS -->
-    <section class="section section--mist programs" id="programs">
+    <section class="section programs" id="programs">
       <div class="container">
         <header class="section-head section-head--split" data-reveal>
           <div>
@@ -228,14 +231,14 @@
         <div class="prog-group">
           <h3 class="group-label"><span class="mono">01 · Therapy</span>발달재활 치료</h3>
           <div class="prog-therapy">
-            <article class="prog-card prog-card--icon" data-reveal>
+            <article class="prog-card prog-card--icon glass" data-reveal>
               <span class="prog-icon"><svg class="icon" aria-hidden="true"><use href="#i-shapes"/></svg></span>
               <h4>감각통합 · 인지치료</h4>
               <p>뇌의 균형 잡힌 발달을 위해 다양한 감각 자극을 조절하는 훈련입니다. 대근육 활동과 미세 운동을 통해 신체 조절 능력을 키웁니다.</p>
               <ul class="chips"><li>감각 조절</li><li>대근육</li><li>미세 운동</li><li>인지</li></ul>
             </article>
-            <article class="prog-card prog-card--icon" data-reveal data-reveal-delay="1">
-              <span class="prog-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+            <article class="prog-card prog-card--icon glass" data-reveal data-reveal-delay="1">
+              <span class="prog-icon prog-icon--pink"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
               <h4>언어 · 놀이치료</h4>
               <p>놀이를 통해 마음을 열고, 타인과 소통하는 언어 능력을 확장합니다.</p>
               <ul class="chips"><li>언어</li><li>의사소통</li><li>놀이</li><li>정서</li></ul>
@@ -246,21 +249,21 @@
         <div class="prog-group">
           <h3 class="group-label"><span class="mono">02 · Activities</span>몸으로 배우는 활동</h3>
           <div class="prog-activities">
-            <article class="prog-card prog-card--photo" data-reveal>
+            <article class="prog-card prog-card--photo glass" data-reveal>
               <div class="prog-photo"><img src="assets/img/photos/horse-800.webp" srcset="assets/img/photos/horse-800.webp 800w, assets/img/photos/horse-1440.webp 1440w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw" width="800" height="600" alt="실내 승마장에서 선생님이 말을 이끌고 아이가 승마하는 모습" loading="lazy" decoding="async" /></div>
               <div class="prog-body">
                 <h4>승마 활동</h4>
                 <p>말과의 교감을 통해 정서 안정과 자신감을 돕고, 균형감각과 신체 발달을 자연스럽게 지원합니다.</p>
               </div>
             </article>
-            <article class="prog-card prog-card--photo" data-reveal data-reveal-delay="1">
+            <article class="prog-card prog-card--photo glass" data-reveal data-reveal-delay="1">
               <div class="prog-photo"><img src="assets/img/photos/vr-800.webp" srcset="assets/img/photos/vr-800.webp 800w, assets/img/photos/vr-1440.webp 1440w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw" width="800" height="600" alt="VR 헤드셋을 쓰고 가상 축구를 즐기며 웃는 아이" loading="lazy" decoding="async" /></div>
               <div class="prog-body">
                 <h4>VR 활동</h4>
                 <p>가상현실 환경에서 신체 감각과 공간 인식을 자극하며, 몰입형 체험을 통해 집중력과 인지 능력 향상을 돕습니다.</p>
               </div>
             </article>
-            <article class="prog-card prog-card--photo" data-reveal data-reveal-delay="2">
+            <article class="prog-card prog-card--photo glass" data-reveal data-reveal-delay="2">
               <div class="prog-photo"><img src="assets/img/photos/music-800.webp" srcset="assets/img/photos/music-800.webp 800w, assets/img/photos/music-1440.webp 1440w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw" width="800" height="600" alt="루돌프 머리띠를 한 아이들이 우쿨렐레와 마이크로 노래하는 모습" loading="lazy" decoding="async" /></div>
               <div class="prog-body">
                 <h4>음악 · 예술 활동</h4>
@@ -300,13 +303,13 @@
             </li>
           </ol>
 
-          <aside class="support" data-reveal data-reveal-delay="1" aria-labelledby="support-title">
+          <aside class="support glass glass--strong" data-reveal data-reveal-delay="1" aria-labelledby="support-title">
             <h3 id="support-title">이용할 수 있는 지원 제도</h3>
             <ul class="support-list">
               <li><span class="s-ic"><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg></span><span><span class="s-org">보건복지부</span><b>발달재활서비스 바우처</b><small>6F 아동청소년발달센터</small></span></li>
-              <li><span class="s-ic"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg></span><span><span class="s-org">대전광역시교육청</span><b>치료지원</b><small>6F 아동청소년발달센터</small></span></li>
+              <li><span class="s-ic s-ic--pink"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg></span><span><span class="s-org">대전광역시교육청</span><b>치료지원</b><small>6F 아동청소년발달센터</small></span></li>
               <li><span class="s-ic"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><span><span class="s-org">보건복지부</span><b>주간·방과후활동서비스</b><small>5F 발달장애인 활동서비스센터</small></span></li>
-              <li><span class="s-ic"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><span><span class="s-org">스포츠 강좌</span><b>스포츠바우처</b><small>적응체육 · 스포츠 활동</small></span></li>
+              <li><span class="s-ic s-ic--pink"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><span><span class="s-org">스포츠 강좌</span><b>스포츠바우처</b><small>적응체육 · 스포츠 활동</small></span></li>
             </ul>
             <p class="support-note"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg><span>이용 대상·자격·본인부담금은 제도마다 달라요. 상담 때 자세히 안내해 드립니다.</span></p>
             <p class="support-note"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>운영시간과 상담 가능 시간은 전화 또는 네이버 지도에서 확인하실 수 있어요.</span></p>
@@ -326,12 +329,12 @@
             <p class="serif">Little moments, big growth.</p>
             <p class="hint">사진을 누르면 크게 볼 수 있어요.</p>
           </header>
-          <a class="tile t-music" href="assets/img/photos/music-1440.webp" data-lightbox data-caption="크리스마스 음악 발표회"><img src="assets/img/photos/music-800.webp" width="800" height="600" alt="루돌프 머리띠를 한 아이들이 우쿨렐레를 들고 마이크로 노래하는 크리스마스 발표회" loading="lazy" decoding="async" /></a>
-          <a class="tile t-horse" href="assets/img/photos/horse-1440.webp" data-lightbox data-caption="실내 승마장 승마 활동"><img src="assets/img/photos/horse-800.webp" width="800" height="600" alt="실내 승마장에서 선생님이 말을 이끌고 아이가 승마하는 모습" loading="lazy" decoding="async" /></a>
-          <a class="tile t-party" href="assets/img/photos/party-1440.webp" data-lightbox data-caption="다 함께 크리스마스 파티"><img src="assets/img/photos/party-800.webp" width="800" height="451" alt="산타와 함께한 크리스마스 파티에서 아이들과 가족들이 즐거워하는 모습" loading="lazy" decoding="async" /></a>
-          <a class="tile t-vr" href="assets/img/photos/vr-1440.webp" data-lightbox data-caption="VR 스포츠 체험"><img src="assets/img/photos/vr-800.webp" width="800" height="600" alt="VR 헤드셋을 쓰고 가상 축구를 즐기며 웃는 아이" loading="lazy" decoding="async" /></a>
-          <a class="tile t-simulator" href="assets/img/photos/simulator-1440.webp" data-lightbox data-caption="승마 시뮬레이터 체험실"><img src="assets/img/photos/simulator-800.webp" width="800" height="600" alt="말 그림 벽화가 있는 체험실에서 선생님과 함께 승마 시뮬레이터를 타는 아이" loading="lazy" decoding="async" /></a>
-          <a class="tile t-digital" href="assets/img/photos/digital-1440.webp" data-lightbox data-caption="레이싱 휠로 즐기는 디지털 놀이"><img src="assets/img/photos/digital-800.webp" width="800" height="600" alt="레이싱 휠과 게임 패드로 화면 속 게임을 함께 즐기는 아이들" loading="lazy" decoding="async" /></a>
+          <a class="tile t-music" href="assets/img/photos/music-1440.webp" data-lightbox data-caption="크리스마스 음악 발표회"><img src="assets/img/photos/music-800.webp" width="800" height="600" alt="루돌프 머리띠를 한 아이들이 우쿨렐레를 들고 마이크로 노래하는 크리스마스 발표회" loading="lazy" decoding="async" /><span class="tile-chip glass glass--strong" aria-hidden="true">크리스마스 음악 발표회</span></a>
+          <a class="tile t-horse" href="assets/img/photos/horse-1440.webp" data-lightbox data-caption="실내 승마장 승마 활동"><img src="assets/img/photos/horse-800.webp" width="800" height="600" alt="실내 승마장에서 선생님이 말을 이끌고 아이가 승마하는 모습" loading="lazy" decoding="async" /><span class="tile-chip glass glass--strong" aria-hidden="true">실내 승마장 승마 활동</span></a>
+          <a class="tile t-party" href="assets/img/photos/party-1440.webp" data-lightbox data-caption="다 함께 크리스마스 파티"><img src="assets/img/photos/party-800.webp" width="800" height="451" alt="산타와 함께한 크리스마스 파티에서 아이들과 가족들이 즐거워하는 모습" loading="lazy" decoding="async" /><span class="tile-chip glass glass--strong" aria-hidden="true">다 함께 크리스마스 파티</span></a>
+          <a class="tile t-vr" href="assets/img/photos/vr-1440.webp" data-lightbox data-caption="VR 스포츠 체험"><img src="assets/img/photos/vr-800.webp" width="800" height="600" alt="VR 헤드셋을 쓰고 가상 축구를 즐기며 웃는 아이" loading="lazy" decoding="async" /><span class="tile-chip glass glass--strong" aria-hidden="true">VR 스포츠 체험</span></a>
+          <a class="tile t-simulator" href="assets/img/photos/simulator-1440.webp" data-lightbox data-caption="승마 시뮬레이터 체험실"><img src="assets/img/photos/simulator-800.webp" width="800" height="600" alt="말 그림 벽화가 있는 체험실에서 선생님과 함께 승마 시뮬레이터를 타는 아이" loading="lazy" decoding="async" /><span class="tile-chip glass glass--strong" aria-hidden="true">승마 시뮬레이터 체험실</span></a>
+          <a class="tile t-digital" href="assets/img/photos/digital-1440.webp" data-lightbox data-caption="레이싱 휠로 즐기는 디지털 놀이"><img src="assets/img/photos/digital-800.webp" width="800" height="600" alt="레이싱 휠과 게임 패드로 화면 속 게임을 함께 즐기는 아이들" loading="lazy" decoding="async" /><span class="tile-chip glass glass--strong" aria-hidden="true">레이싱 휠로 즐기는 디지털 놀이</span></a>
         </div>
       </div>
     </section>
@@ -350,7 +353,7 @@
               <a class="btn btn--outline-light btn--lg" href="https://naver.me/GOPrnvrX" target="_blank" rel="noopener noreferrer">네이버 지도 길찾기<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
             </div>
           </div>
-          <dl class="contact-info">
+          <dl class="contact-info glass--dark">
             <div><dt><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>주소</dt><dd>대전광역시 대덕구 계족산로81번길 95<br />예성빌딩 5·6층 <span>(송촌동 449-3)</span></dd></div>
             <div><dt><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화</dt><dd><a href="tel:0507-1428-3425">0507-1428-3425</a></dd></div>
             <div><dt><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>운영시간</dt><dd>전화 또는 네이버 지도에서 확인해 주세요</dd></div>
@@ -363,7 +366,7 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="grass footer-grass" aria-hidden="true"><svg width="38" height="48" style="opacity:0.93;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.7;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="32" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.5"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="18" height="22" style="opacity:0.78"><use href="#i-sprout"/></svg><svg width="38" height="48" style="opacity:0.81;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="24" height="30" style="opacity:0.79;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.48"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.78;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="32" height="40" style="opacity:0.69;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="42" height="53" style="opacity:0.58"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.81"><use href="#i-sprout"/></svg><svg width="30" height="37" style="opacity:0.67;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.84"><use href="#i-sprout"/></svg><svg width="27" height="34" style="opacity:0.73"><use href="#i-sprout"/></svg><svg width="45" height="56" style="opacity:0.87"><use href="#i-sprout"/></svg><svg width="30" height="38" style="opacity:0.66;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.57;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="18" height="23" style="opacity:0.71;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="36" height="45" style="opacity:0.68;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="32" style="opacity:0.88"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="37" height="46" style="opacity:0.87"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.84"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.89"><use href="#i-sprout"/></svg><svg width="44" height="55" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.68"><use href="#i-sprout"/></svg><svg width="36" height="45" style="opacity:0.68"><use href="#i-sprout"/></svg><svg width="30" height="37" style="opacity:0.93;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="57" style="opacity:0.62;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="33" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="58" style="opacity:0.8"><use href="#i-sprout"/></svg><svg width="23" height="29" style="opacity:0.57"><use href="#i-sprout"/></svg><svg width="33" height="41" style="opacity:0.91"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.5;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.46"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.52;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="45" height="56" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="23" height="29" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.85"><use href="#i-sprout"/></svg><svg width="44" height="55" style="opacity:0.56;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="40" height="50" style="opacity:0.78"><use href="#i-sprout"/></svg><svg width="21" height="26" style="opacity:0.51;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="29" height="36" style="opacity:0.58;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="29" height="36" style="opacity:0.68;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="41" height="51" style="opacity:0.61"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.6;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="33" style="opacity:0.86"><use href="#i-sprout"/></svg><svg width="37" height="46" style="opacity:0.7"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.61;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.5"><use href="#i-sprout"/></svg><svg width="38" height="48" style="opacity:0.99;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="42" height="53" style="opacity:0.77"><use href="#i-sprout"/></svg><svg width="18" height="22" style="opacity:0.96"><use href="#i-sprout"/></svg></div>
+    <div class="grass footer-grass" aria-hidden="true"><svg width="44" height="55" style="opacity:0.92;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="38" height="48" style="opacity:0.73;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.89"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.5"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.75;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="18" height="22" style="opacity:0.78"><use href="#i-sprout"/></svg><svg width="38" height="48"><use href="#i-bud"/></svg><svg width="16" height="20" style="opacity:0.91"><use href="#i-sprout"/></svg><svg width="18" height="22" style="opacity:0.55"><use href="#i-sprout"/></svg><svg width="17" height="21" style="opacity:0.88"><use href="#i-sprout"/></svg><svg width="46" height="57" style="opacity:0.91;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="30" height="38" style="opacity:0.72;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="39" height="49" style="opacity:0.81"><use href="#i-sprout"/></svg><svg width="44" height="55"><use href="#i-bud"/></svg><svg width="29" height="36" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="30" height="38" style="opacity:0.47;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="21" height="26" style="opacity:0.67;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="35" height="44" style="opacity:0.49"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.57;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="37" height="46"><use href="#i-bud"/></svg><svg width="35" height="44" style="opacity:0.99"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.76"><use href="#i-sprout"/></svg><svg width="30" height="37" style="opacity:0.64"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.98;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="27" style="opacity:0.52;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="16" height="20" style="opacity:0.48;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="25" height="31" style="opacity:0.83"><use href="#i-sprout"/></svg><svg width="42" height="52" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="37" height="46"><use href="#i-bud"/></svg><svg width="35" height="44" style="opacity:0.51"><use href="#i-sprout"/></svg><svg width="26" height="33" style="opacity:0.45;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="57" style="opacity:0.62;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="26" height="33" style="opacity:0.55;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="58" style="opacity:0.8"><use href="#i-sprout"/></svg><svg width="23" height="29" style="opacity:0.57"><use href="#i-sprout"/></svg><svg width="33" height="41" style="opacity:0.91"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.5;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="37" height="46"><use href="#i-bud"/></svg><svg width="46" height="58" style="opacity:0.65;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="22" height="28" style="opacity:0.98"><use href="#i-sprout"/></svg><svg width="45" height="56" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="23" height="29" style="opacity:0.62"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.85"><use href="#i-sprout"/></svg><svg width="44" height="55"><use href="#i-bud"/></svg><svg width="35" height="44" style="opacity:0.94;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="37" height="46" style="opacity:0.48"><use href="#i-sprout"/></svg><svg width="42" height="52" style="opacity:0.98"><use href="#i-sprout"/></svg><svg width="36" height="45" style="opacity:0.59;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="46" height="58" style="opacity:0.72;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="19" height="24" style="opacity:0.52"><use href="#i-sprout"/></svg><svg width="37" height="46"><use href="#i-bud"/></svg><svg width="26" height="33" style="opacity:0.95"><use href="#i-sprout"/></svg><svg width="17" height="21" style="opacity:0.49"><use href="#i-sprout"/></svg><svg width="28" height="35" style="opacity:0.48"><use href="#i-sprout"/></svg><svg width="34" height="43" style="opacity:0.74;transform:scaleX(-1)"><use href="#i-sprout"/></svg><svg width="20" height="25" style="opacity:0.65;transform:scaleX(-1)"><use href="#i-sprout"/></svg></div>
     <div class="container footer-inner">
       <div class="footer-brand">
         <img src="assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="178" height="36" loading="lazy" />
@@ -379,7 +382,7 @@
   </footer>
 
   <!-- Mobile quick actions -->
-  <div class="mobile-cta">
+  <div class="mobile-cta glass glass--strong">
     <a class="btn btn--primary" href="tel:0507-1428-3425"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>전화 상담</a>
     <a class="btn btn--ghost" href="https://naver.me/GOPrnvrX" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>길찾기</a>
   </div>
