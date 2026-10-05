@@ -89,7 +89,7 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 .hands::before, .hands::after { content: ""; flex: 1; height: 2px; border-radius: 2px; background: currentColor; opacity: .85; }
 .hands svg { width: 30px; height: 26px; margin: 0 -1px; }
 
-/* Ministry of Health and Welfare mark: always shown with the government emblem */
+/* Ministry of Health and Welfare mark with the government emblem (hero trust line + footer only) */
 .mohw { display: inline; white-space: nowrap; font-weight: 700; color: var(--ink); }
 .mohw img { display: inline-block; width: 1.15em; height: 1.15em; margin-right: .3em; vertical-align: -0.22em; }
 
@@ -185,9 +185,7 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 .trust-list li + li { border-left: 1px solid var(--line); }
 .trust-list li b { display: block; font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 .trust-list .t-ic { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; background: var(--wash-2); color: var(--sprout); flex: none; }
-.trust-list .t-ic img { width: 26px; height: 26px; }
 .trust-list .t-ic .icon { width: 22px; height: 22px; }
-.trust-list .mohw { font-weight: 600; color: var(--ink-2); }
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--section-y); }
@@ -235,7 +233,6 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 .floor-card p { font-size: 16px; line-height: 1.75; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 .tags li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 10px; background: var(--mist); font-size: 13.5px; font-weight: 600; color: var(--ink-2); line-height: 1.4; }
-.tags .mohw { font-size: 13.5px; }
 
 /* ---------- Programs ---------- */
 .prog-group + .prog-group { margin-top: clamp(48px, 6vw, 72px); }
@@ -287,10 +284,8 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
 .support-list { margin: 20px 0 22px; display: grid; gap: 10px; }
 .support-list li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
 .support-list .s-ic { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 13px; background: var(--wash-2); color: var(--sprout); }
-.support-list .s-ic img { width: 24px; height: 24px; }
 .support-list .s-ic .icon { width: 22px; height: 22px; }
 .support-list .s-org { display: block; font-size: 13px; line-height: 1.4; color: var(--ink-3); }
-.support-list .s-org .mohw { font-weight: 600; color: var(--ink-2); }
 .support-list b { display: block; font-size: 16.5px; line-height: 1.4; color: var(--ink); letter-spacing: -0.02em; }
 .support-list small { display: block; font-size: 13px; color: var(--ink-3); line-height: 1.4; }
 .support-note { display: flex; gap: 8px; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
@@ -469,7 +464,6 @@ h1, h2, h3, h4 { color: var(--ink); letter-spacing: -0.035em; line-height: 1.2; 
   .trust-list li { padding: 18px 12px; gap: 10px; font-size: 13px; }
   .trust-list li b { font-size: 14.5px; }
   .trust-list .t-ic { width: 38px; height: 38px; border-radius: 12px; }
-  .trust-list .t-ic img { width: 22px; height: 22px; }
   .room { min-height: 120px; padding: 14px; }
   .building-ground { margin: 0 -4px; }
   .room b { font-size: 15px; }
