@@ -1,0 +1,13 @@
+dist/
+.baseline/
+test-results/
+playwright-report/
+visual-results/
+.lighthouseci/
+package-lock.json
+tests/fixtures/
+
+# Legacy hand-written site, kept byte-for-byte until the Astro migration.
+index.html
+404.html
+assets/
