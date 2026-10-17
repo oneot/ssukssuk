@@ -1,0 +1,54 @@
+---
+import { navigation, site, tel } from '../../data/site';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  /** The home page header also has the menu, the call button and the menu toggle. */
+  home?: boolean;
+}
+
+const { home = false } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-bar glass glass--strong">
+      <a class="brand" href={home ? '#top' : '/'} aria-label={`${site.name} 처음으로`}>
+        <img src="/assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="207" height="42" />
+      </a>
+      {home && (
+        <>
+          <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+            <ul>
+              {navigation.map(({ href, label }) => (
+                <li>
+                  <a href={href}>{label}</a>
+                </li>
+              ))}
+              <li class="menu-cta">
+                <a class="btn btn--primary btn--lg" href={tel}>
+                  <Icon name="phone" />
+                  전화 상담 {site.phone}
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <a class="header-call" href={tel} aria-label={`전화 상담 ${site.phone}`}>
+            <Icon name="phone" />
+            <span>상담 {site.phone}</span>
+          </a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="메뉴 열기"
+          >
+            <span />
+            <span />
+          </button>
+        </>
+      )}
+    </div>
+  </div>
+</header>

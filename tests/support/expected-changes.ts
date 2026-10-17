@@ -9,7 +9,7 @@ export const legacyExpectedChanges = {
    * leaf-vein path that index.html has. Sharing one icon sprite adds the
    * veins to the 404 doodle.
    */
-  doodleVeins: false,
+  doodleVeins: true,
   /**
    * Photos are re-encoded (AVIF/WebP, more widths, a dedicated hero circle
    * crop, a small government emblem). Photo regions are compared with a

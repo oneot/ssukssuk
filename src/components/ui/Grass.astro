@@ -1,0 +1,24 @@
+---
+import type { Blade } from '../../data/grass';
+
+interface Props {
+  blades: Blade[];
+  class?: string;
+  /** Hide from assistive technology (when no ancestor already does). */
+  hidden?: boolean;
+}
+
+const { blades, class: className, hidden = false } = Astro.props;
+
+const style = ({ opacity, mirrored }: Blade) =>
+  [opacity !== undefined && `opacity:${opacity}`, mirrored && 'transform:scaleX(-1)'].filter(Boolean).join(';') ||
+  undefined;
+---
+
+<div class:list={['grass', className]} aria-hidden={hidden ? 'true' : undefined}>
+  {blades.map((blade) => (
+    <svg width={blade.width} height={blade.height} style={style(blade)}>
+      <use href={blade.bud ? '#i-bud' : '#i-sprout'} />
+    </svg>
+  ))}
+</div>

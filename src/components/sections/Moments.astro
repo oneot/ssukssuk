@@ -1,0 +1,39 @@
+---
+import { gallery } from '../../data/content';
+import { photo } from '../../data/photos';
+import Icon from '../ui/Icon.astro';
+---
+
+<section class="section moments" id="moments">
+  <div class="container">
+    <div class="collage">
+      <header class="collage-head" data-reveal>
+        <p class="eyebrow">
+          <Icon name="sprout" />
+          Moments
+        </p>
+        <h2>쑥쑥의 순간들</h2>
+        <p class="serif">Little moments, big growth.</p>
+        <p class="hint">사진을 누르면 크게 볼 수 있어요.</p>
+      </header>
+      {gallery.map(({ slot, alt, caption, ...tile }) => {
+        const image = photo(tile.photo);
+        return (
+          <a class={`tile t-${slot}`} href={image.large} data-lightbox data-caption={caption}>
+            <img
+              src={image.small}
+              width={image.width}
+              height={image.height}
+              alt={alt}
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="tile-chip glass glass--strong" aria-hidden="true">
+              {caption}
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

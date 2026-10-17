@@ -1,0 +1,41 @@
+---
+import { floors } from '../../data/content';
+import { buildingAndFloors } from '../../data/site';
+import Icon from '../ui/Icon.astro';
+import Building from './Building.astro';
+---
+
+<section class="section about" id="about">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">
+        <Icon name="sprout" />
+        About
+      </p>
+      <h2>
+        한 건물에서 이어지는
+        <br />세 개의 공간
+      </h2>
+      <p>대전 송촌동 {buildingAndFloors}. 발달재활부터 움직임, 일상과 여가까지 아이의 성장 단계에 맞춰 이어집니다.</p>
+    </header>
+
+    <div class="about-grid">
+      <Building />
+
+      <div class="floors">
+        {floors.map((floor) => (
+          <article class="floor-card" data-room={floor.room} data-reveal>
+            <span class="floor-no">{floor.level}</span>
+            <h3>{floor.name}</h3>
+            <p>{floor.description}</p>
+            <ul class="tags">
+              {floor.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

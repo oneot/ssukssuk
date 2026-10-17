@@ -1,4 +1,5 @@
 dist/
+.astro/
 .baseline/
 test-results/
 playwright-report/
@@ -6,8 +7,8 @@ visual-results/
 .lighthouseci/
 package-lock.json
 tests/fixtures/
-
-# Legacy hand-written site, kept byte-for-byte until the Astro migration.
-index.html
-404.html
-assets/
+# Kept byte-for-byte from the hand-written site; reformatting is phase 3's job.
+src/styles/style.css
+src/styles/not-found.css
+# Original script, converted to TypeScript modules in phase 4.
+public/assets/js/main.js

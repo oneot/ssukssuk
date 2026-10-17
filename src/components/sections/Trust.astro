@@ -1,0 +1,29 @@
+---
+import type { IconName } from '../ui/icons';
+import Icon from '../ui/Icon.astro';
+
+const items: { icon: IconName; pink?: boolean; label: string; title: string }[] = [
+  { icon: 'award', label: '보건복지부 지정', title: '발달재활서비스 제공기관' },
+  { icon: 'users', pink: true, label: '보건복지부 지정', title: '주간·방과후활동서비스 제공기관' },
+  { icon: 'school', label: '대전광역시교육청', title: '치료지원 기관' },
+  { icon: 'check', pink: true, label: '1:1 맞춤', title: '전문 치료진 · 따뜻한 상담' },
+];
+---
+
+<section class="trust" aria-label="지정 및 지원 기관">
+  <div class="container">
+    <ul class="trust-list glass glass--strong">
+      {items.map(({ icon, pink, label, title }) => (
+        <li>
+          <span class:list={['t-ic', pink && 't-ic--pink']}>
+            <Icon name={icon} />
+          </span>
+          <span>
+            {label}
+            <b>{title}</b>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

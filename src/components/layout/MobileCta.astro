@@ -1,0 +1,15 @@
+---
+import { site, tel } from '../../data/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="mobile-cta glass glass--strong">
+  <a class="btn btn--primary" href={tel}>
+    <Icon name="phone" />
+    전화 상담
+  </a>
+  <a class="btn btn--ghost" href={site.mapUrl} target="_blank" rel="noopener noreferrer">
+    <Icon name="pin" />
+    길찾기
+  </a>
+</div>

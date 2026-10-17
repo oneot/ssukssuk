@@ -1,0 +1,87 @@
+---
+import { buildingAndFloors, instagramUrl, site, tel } from '../../data/site';
+import Icon from '../ui/Icon.astro';
+
+const { address } = site;
+const roadAddress = `${address.region} ${address.district} ${address.road}`;
+---
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="hands" aria-hidden="true">
+      <svg>
+        <use href="#i-heart"></use>
+      </svg>
+    </div>
+    <div class="contact-card" data-reveal>
+      <div class="contact-copy">
+        <p class="eyebrow eyebrow--light">
+          <Icon name="sprout" />
+          Contact
+        </p>
+        <h2>
+          함께 성장할 준비,
+          <br />
+          되셨나요?
+        </h2>
+        <p>망설이지 말고 문의해 주세요. 아이의 내일을 위한 가장 따뜻한 상담이 기다리고 있습니다.</p>
+        <div class="contact-actions">
+          <a class="btn btn--light btn--lg" href={tel}>
+            <Icon name="phone" />
+            {site.phone}
+          </a>
+          <a class="btn btn--outline-light btn--lg" href={site.mapUrl} target="_blank" rel="noopener noreferrer">
+            네이버 지도 길찾기
+            <Icon name="external" />
+          </a>
+        </div>
+      </div>
+      <dl class="contact-info glass--dark">
+        <div>
+          <dt>
+            <Icon name="pin" />
+            주소
+          </dt>
+          <dd>
+            {roadAddress}
+            <br />
+            {buildingAndFloors}{' '}
+            <span>
+              ({address.dong} {address.lot})
+            </span>
+          </dd>
+        </div>
+        <div>
+          <dt>
+            <Icon name="phone" />
+            전화
+          </dt>
+          <dd>
+            <a href={tel}>{site.phone}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>
+            <Icon name="clock" />
+            운영시간
+          </dt>
+          <dd>전화 또는 네이버 지도에서 확인해 주세요</dd>
+        </div>
+        <div>
+          <dt>
+            <Icon name="insta" />
+            인스타그램
+          </dt>
+          <dd
+            set:html={site.instagram
+              .map(
+                (handle) =>
+                  `<a href="${instagramUrl(handle)}" target="_blank" rel="noopener noreferrer">@${handle}</a>`,
+              )
+              .join('<br />')}
+          />
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
