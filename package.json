@@ -39,7 +39,7 @@
     "stylelint-config-recommended": "18.0.0",
     "stylelint-config-standard": "40.0.0",
     "svgo": "4.1.0",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "dependencies": {
     "astro": "7.3.8",
