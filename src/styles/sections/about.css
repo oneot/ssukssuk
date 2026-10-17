@@ -1,0 +1,270 @@
+/* About: building drawing and floor cards */
+.about {
+  background:
+    radial-gradient(26% 34% at 22% 72%, rgba(var(--blush-rgb), 0.18), rgba(var(--blush-rgb), 0) 70%),
+    radial-gradient(22% 30% at 36% 88%, rgba(var(--sprout-rgb), 0.07), rgba(var(--sprout-rgb), 0) 70%);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+.building {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin-inline: auto;
+  padding-top: 74px;
+}
+
+.building-sign {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 132px;
+  transform: translateX(-50%);
+}
+
+.building-roof {
+  height: 14px;
+  margin: 0 -12px;
+  border-radius: 12px 12px 4px 4px;
+  background: var(--sprout);
+}
+
+.building-body {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 0 0 24px 24px;
+}
+
+.building-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Each space has its own colour: 6F 발달센터 = logo green, 6F 움직임 스튜디오 = leaf green, 5F 활동서비스센터 = logo pink */
+[data-room='6a'] {
+  --space: var(--sprout);
+  --space-ink: var(--sprout-ink);
+  --space-tint: var(--sprout-tint);
+  --space-on: var(--white);
+}
+
+[data-room='6b'] {
+  --space: var(--leaf);
+  --space-ink: var(--leaf-ink);
+  --space-tint: var(--leaf-tint);
+  --space-on: var(--white);
+}
+
+[data-room='5'] {
+  --space: var(--blush);
+  --space-ink: var(--blush-ink);
+  --space-tint: var(--blush-wash);
+  --space-on: var(--blush-on);
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 152px;
+  padding: 18px 18px 20px;
+  border-radius: 16px;
+  background: var(--space-tint);
+  border: 1.5px solid transparent;
+  transition:
+    background-color 0.35s var(--ease),
+    border-color 0.35s var(--ease);
+
+  & .fl {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--space-ink);
+    transition: color 0.35s var(--ease);
+  }
+
+  & b {
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    transition: color 0.35s var(--ease);
+  }
+}
+
+.room--wide {
+  grid-column: 1 / -1;
+  min-height: 128px;
+}
+
+.room-door {
+  width: 46px;
+  height: 26px;
+  margin: 4px auto -10px;
+  border-radius: 10px 10px 0 0;
+  background: rgba(var(--blush-ink-rgb), 0.16);
+}
+
+.building-ground {
+  position: relative;
+  margin: 0 -16px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--sprout);
+    opacity: 0.35;
+  }
+
+  & .grass {
+    height: 34px;
+    padding: 0 6px;
+  }
+}
+
+.building-addr {
+  margin-top: 14px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* Hovering a room on the left or a floor card on the right highlights both */
+.about-grid:has([data-room='6a']:hover, [data-room='6a']:focus-within)
+  :is(.room[data-room='6a'], .floor-card[data-room='6a'] .floor-no),
+.about-grid:has([data-room='6b']:hover, [data-room='6b']:focus-within)
+  :is(.room[data-room='6b'], .floor-card[data-room='6b'] .floor-no),
+.about-grid:has([data-room='5']:hover, [data-room='5']:focus-within)
+  :is(.room[data-room='5'], .floor-card[data-room='5'] .floor-no) {
+  background: var(--space);
+  border-color: var(--space);
+  color: var(--space-on);
+}
+
+.about-grid:has([data-room='6a']:hover, [data-room='6a']:focus-within) .room[data-room='6a'] *,
+.about-grid:has([data-room='6b']:hover, [data-room='6b']:focus-within) .room[data-room='6b'] *,
+.about-grid:has([data-room='5']:hover, [data-room='5']:focus-within) .room[data-room='5'] * {
+  color: var(--space-on);
+}
+
+.floors {
+  display: flex;
+  flex-direction: column;
+}
+
+.floor-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 8px 22px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+
+  &:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+.floor-no {
+  grid-row: span 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--space-tint);
+  color: var(--space-ink);
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.floor-card h3 {
+  font-size: clamp(21px, 2vw, 24px);
+  letter-spacing: -0.03em;
+}
+
+.floor-card p {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+
+  & li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: var(--mist);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 1023px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .building {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 767px) {
+  .room {
+    min-height: 120px;
+    padding: 14px;
+  }
+
+  .building-ground {
+    margin: 0 -4px;
+  }
+
+  .room b {
+    font-size: 15px;
+  }
+
+  .floor-card {
+    grid-template-columns: 1fr;
+    padding: 26px 0;
+  }
+
+  .floor-no {
+    grid-row: auto;
+    width: 56px;
+    height: 34px;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+}

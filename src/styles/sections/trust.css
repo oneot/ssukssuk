@@ -1,0 +1,88 @@
+/* Trust strip under the hero */
+.trust {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(-64px, -5vw, -40px);
+}
+
+.trust-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: 28px;
+
+  & li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 26px 20px;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--ink-3);
+  }
+
+  & li + li {
+    border-left: 1px solid rgba(var(--shade-rgb), 0.08);
+  }
+
+  & li b {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  & .t-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: rgba(var(--wash-rgb), 0.9);
+    color: var(--sprout);
+    flex: none;
+  }
+
+  & .t-ic .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  & .t-ic--pink {
+    background: var(--blush-wash-2);
+    color: var(--blush-ink);
+  }
+}
+
+@media (max-width: 1023px) {
+  .trust-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-list li:nth-child(3) {
+    border-left: 0;
+  }
+
+  .trust-list li:nth-child(n + 3) {
+    border-top: 1px solid rgba(var(--shade-rgb), 0.08);
+  }
+}
+
+@media (max-width: 767px) {
+  .trust-list li {
+    padding: 18px 12px;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .trust-list li b {
+    font-size: 14.5px;
+  }
+
+  .trust-list .t-ic {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+}

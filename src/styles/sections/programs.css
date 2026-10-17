@@ -1,0 +1,182 @@
+/* Programs: therapy (icon cards) and activities (photo cards) */
+.programs {
+  background:
+    radial-gradient(30% 28% at 4% 18%, rgba(var(--blush-rgb), 0.22), rgba(var(--blush-rgb), 0) 70%),
+    radial-gradient(30% 32% at 96% 62%, rgba(var(--sprout-rgb), 0.12), rgba(var(--sprout-rgb), 0) 70%),
+    radial-gradient(26% 24% at 46% 98%, rgba(var(--blush-rgb), 0.14), rgba(var(--blush-rgb), 0) 70%), var(--paper-2);
+}
+
+.prog-group + .prog-group {
+  margin-top: clamp(48px, 6vw, 72px);
+}
+
+.group-label {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+  font-size: 21px;
+  letter-spacing: -0.03em;
+
+  & .mono {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sprout);
+    letter-spacing: 0.1em;
+  }
+}
+
+.prog-therapy {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.prog-activities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.prog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  transition:
+    transform 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      var(--glass-rim),
+      0 0 0 1px rgba(var(--blush-deep-rgb), 0.2),
+      0 34px 64px -34px rgba(var(--blush-deep-rgb), 0.5);
+  }
+
+  /* Sprout that pops up in the corner on hover */
+  &::after {
+    content: '';
+    position: absolute;
+    right: 26px;
+    top: 26px;
+    width: 26px;
+    height: 26px;
+    opacity: 0;
+    transform: translateY(8px) scale(0.4);
+    transform-origin: 50% 100%;
+    background: var(--mark-sprout) center / contain no-repeat;
+    transition:
+      opacity 0.35s var(--ease),
+      transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.prog-card--icon {
+  padding: clamp(28px, 3.4vw, 40px);
+  gap: 14px;
+}
+
+.prog-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: var(--wash);
+  color: var(--sprout);
+  margin-bottom: 8px;
+
+  & .icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.prog-icon--pink {
+  background: var(--blush-wash-2);
+  color: var(--blush-ink);
+}
+
+.prog-card h4 {
+  font-size: clamp(22px, 2.1vw, 26px);
+  letter-spacing: -0.035em;
+}
+
+.prog-card p {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+
+  & li {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--shade-rgb), 0.12);
+    background: rgba(var(--white-rgb), 0.55);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+}
+
+.prog-card--photo {
+  overflow: hidden;
+}
+
+.prog-photo {
+  margin: 10px 10px 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 20px 64px 20px 20px;
+  background: var(--mist);
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+  }
+}
+
+.prog-card--photo:hover .prog-photo img {
+  transform: scale(1.04);
+}
+
+.prog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 26px 30px;
+}
+
+.prog-card--photo::after {
+  top: auto;
+  bottom: 30px;
+  right: 24px;
+}
+
+@media (max-width: 1023px) {
+  .prog-activities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .prog-therapy,
+  .prog-activities {
+    grid-template-columns: 1fr;
+  }
+}

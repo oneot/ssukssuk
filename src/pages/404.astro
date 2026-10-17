@@ -5,9 +5,7 @@ import Grass from '../components/ui/Grass.astro';
 import Icon from '../components/ui/Icon.astro';
 import { notFoundGrass } from '../data/grass';
 import { site } from '../data/site';
-// Keep last: Astro orders stylesheets by import position, and these page
-// rules must follow the main stylesheet (as the inline <style> did before).
-import '../styles/not-found.css';
+import '../styles/pages/not-found.css';
 ---
 
 <BaseLayout title={`페이지를 찾을 수 없어요 | ${site.name}`} noindex viewport="width=device-width, initial-scale=1">

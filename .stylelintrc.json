@@ -1,7 +1,33 @@
 {
-  "extends": ["stylelint-config-recommended"],
+  "extends": ["stylelint-config-standard"],
   "rules": {
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "color-function-alias-notation": null,
+    "media-feature-range-notation": "prefix",
     "no-descending-specificity": null,
-    "property-no-deprecated": null
-  }
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      { "message": "Use kebab-case class names (BEM modifiers with --)" }
+    ],
+    "color-no-hex": [true, { "message": "Use a colour token from src/styles/tokens.css" }],
+    "color-named": ["never", { "message": "Use a colour token from src/styles/tokens.css" }],
+    "function-disallowed-list": [
+      ["rgb", "hsl", "hsla", "hwb", "lab", "lch", "oklab", "oklch", "color"],
+      { "message": "Use a colour token, or rgba(var(--name-rgb), alpha) for transparency" }
+    ],
+    "declaration-property-value-disallowed-list": [
+      { "/.*/": ["/rgba\\(\\s*\\d/"] },
+      { "message": "Use rgba(var(--name-rgb), alpha) with a channel token from src/styles/tokens.css" }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/styles/tokens.css"],
+      "rules": {
+        "color-no-hex": null,
+        "value-keyword-case": null
+      }
+    }
+  ]
 }

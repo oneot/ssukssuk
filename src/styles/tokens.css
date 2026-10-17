@@ -1,0 +1,94 @@
+/*
+ * Design tokens: colours, fonts, sizes and motion for the whole site.
+ *
+ * Colours used with transparency also have an "-rgb" twin holding the same
+ * colour as R G B channels, used as rgba(var(--blush-rgb), 0.26).
+ * `npm run lint` checks that every twin matches its colour.
+ */
+:root {
+  /* Palette */
+  --paper: #fff;
+  --paper-2: #fbfcf9;
+  --mist: #f6f7f3;
+  --line: #e7e9e4;
+  --line-2: #dce1d9;
+  --ink: #1f2421;
+  --ink-rgb: 31, 36, 33;
+  --ink-2: #4a524d;
+  --ink-3: #6b726d;
+  --sprout: #4f7e52;
+  --sprout-rgb: 79, 126, 82;
+  --sprout-700: #416b44;
+  --sprout-300: #a6c4a6;
+  --sprout-ink: #3f6542;
+  --sprout-tint: #e7efe7;
+  --leaf: #577b41;
+  --leaf-ink: #466234;
+  --leaf-tint: #ebf0e4;
+  --sage: #b7c7a6;
+  --mint: #b9d6b9;
+  --forest: #23412f;
+  --forest-rgb: 35, 65, 47;
+  --wash: #e9f2e9;
+  --wash-rgb: 233, 242, 233;
+  --wash-2: #f3f8f2;
+  --frost: #f2f6f1;
+  --blush: #eea6a8;
+  --blush-rgb: 238, 166, 168;
+  --blush-deep: #c97b80;
+  --blush-deep-rgb: 201, 123, 128;
+  --blush-ink: #9c4f57;
+  --blush-ink-rgb: 156, 79, 87;
+  --blush-on: #5a2a2f;
+  --blush-light: #f5c3c5;
+  --blush-wash: #fcefef;
+  --blush-wash-2: #fde6e7;
+  --petal: #fde5e6;
+  --petal-2: #f7d3d5;
+  --white: #fff;
+  --white-rgb: 255, 255, 255;
+  --charcoal: #222;
+
+  /* Channel-only colours for shadows, hairlines and soft light */
+  --shade-rgb: 31, 59, 38;
+  --moss-rgb: 47, 86, 50;
+  --dew-rgb: 190, 222, 190;
+  --fern-rgb: 140, 190, 140;
+  --night-rgb: 18, 28, 22;
+  --black-rgb: 0, 0, 0;
+
+  /* Liquid glass */
+  --glass-fill: linear-gradient(180deg, rgba(var(--white-rgb), 0.8), rgba(var(--white-rgb), 0.56));
+  --glass-fill-strong: linear-gradient(180deg, rgba(var(--white-rgb), 0.92), rgba(var(--white-rgb), 0.76));
+  --glass-blur: blur(22px) saturate(180%);
+  --glass-rim:
+    inset 0 1px 0 rgba(var(--white-rgb), 0.95), inset 0 -1px 0 rgba(var(--white-rgb), 0.45),
+    inset 0 0 0 1px rgba(var(--white-rgb), 0.55);
+  --glass-shadow:
+    0 0 0 1px rgba(var(--shade-rgb), 0.06), 0 24px 50px -28px rgba(var(--shade-rgb), 0.34),
+    0 2px 10px -4px rgba(var(--shade-rgb), 0.1);
+
+  /* Sprout mark drawn as a CSS image (active menu item, card hover) */
+  --mark-sprout: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 23V13' stroke='%234f7e52' stroke-width='2.4' stroke-linecap='round' fill='none'/%3E%3Cpath d='M12 14.6C6.6 15.6 2.4 12.2 1.8 6.6c5.8-.4 9.8 2.8 10.2 8z' fill='%234f7e52'/%3E%3Cpath d='M12 12.4c0-5.8 3.6-10.2 10.2-10.4.4 6.2-4 10.6-10.2 10.4z' fill='%234f7e52'/%3E%3C/svg%3E");
+
+  /* Type */
+  --kr:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', sans-serif;
+  --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout and motion */
+  --container: 1200px;
+  --gutter: clamp(20px, 5vw, 56px);
+  --header-h: 68px;
+  --section-y: clamp(84px, 10vw, 140px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-soft: 0 24px 60px -34px rgba(var(--shade-rgb), 0.38);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --header-h: 60px;
+  }
+}

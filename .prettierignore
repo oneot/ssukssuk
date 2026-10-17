@@ -7,8 +7,5 @@ visual-results/
 .lighthouseci/
 package-lock.json
 tests/fixtures/
-# Kept byte-for-byte from the hand-written site; reformatting is phase 3's job.
-src/styles/style.css
-src/styles/not-found.css
 # Original script, converted to TypeScript modules in phase 4.
 public/assets/js/main.js

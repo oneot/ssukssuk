@@ -1,0 +1,123 @@
+/* Contact card */
+.contact {
+  padding-top: 0;
+  padding-bottom: clamp(64px, 8vw, 104px);
+
+  & .hands {
+    margin-bottom: clamp(56px, 7vw, 88px);
+  }
+}
+
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(36px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(36px, 6vw, 80px);
+  border-radius: clamp(28px, 4vw, 44px);
+  color: rgba(var(--white-rgb), 0.82);
+  background:
+    radial-gradient(60% 70% at 100% 0%, rgba(var(--dew-rgb), 0.12), rgba(var(--dew-rgb), 0) 70%),
+    radial-gradient(50% 60% at 0% 100%, rgba(var(--fern-rgb), 0.1), rgba(var(--fern-rgb), 0) 70%), var(--forest);
+}
+
+.contact-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+
+  & h2 {
+    color: var(--white);
+    font-size: clamp(32px, 4.2vw, 52px);
+    letter-spacing: -0.042em;
+    line-height: 1.2;
+  }
+
+  & p {
+    font-size: 17px;
+    max-width: 28em;
+  }
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.contact-info {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  padding: 6px 28px;
+  border-radius: 28px;
+
+  & > div {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(var(--white-rgb), 0.14);
+  }
+
+  & > div:first-child {
+    border-top: 0;
+  }
+
+  & dt {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+    color: var(--mint);
+    font-weight: 600;
+  }
+
+  & dt .icon {
+    width: 17px;
+    height: 17px;
+  }
+
+  & dd {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--white);
+  }
+
+  & dd span {
+    color: rgba(var(--white-rgb), 0.6);
+  }
+
+  & a {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--white-rgb), 0.3);
+    text-underline-offset: 4px;
+  }
+
+  & a:hover {
+    text-decoration-color: var(--white);
+  }
+}
+
+@media (max-width: 1023px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-info > div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .contact-actions .btn {
+    width: 100%;
+  }
+}

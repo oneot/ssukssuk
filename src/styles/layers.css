@@ -1,0 +1,2 @@
+/* Layer order for every stylesheet; whichever file loads first declares it. */
+@layer tokens, base, components, sections, pages;
