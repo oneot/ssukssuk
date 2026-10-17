@@ -1,0 +1,31 @@
+# 이용 안내(Step by step) 오른쪽 '이용할 수 있는 지원 제도' 목록
+#
+# - icon: 아이콘 이름 (src/components/ui/icons.ts에 있는 이름. 예: ticket, school, users, ball)
+# - color: green 또는 pink (아이콘 배경색)
+# - org: 위쪽 작은 글씨 (운영 기관)
+# - name: 굵은 제도 이름
+# - place: 아래쪽 작은 글씨 (이용하는 곳)
+
+- icon: ticket
+  color: green
+  org: 보건복지부
+  name: 발달재활서비스 바우처
+  place: 6F 아동청소년발달센터
+
+- icon: school
+  color: pink
+  org: 대전광역시교육청
+  name: 치료지원
+  place: 6F 아동청소년발달센터
+
+- icon: users
+  color: green
+  org: 보건복지부
+  name: 주간·방과후활동서비스
+  place: 5F 발달장애인 활동서비스센터
+
+- icon: ball
+  color: pink
+  org: 스포츠 강좌
+  name: 스포츠바우처
+  place: 적응체육 · 스포츠 활동

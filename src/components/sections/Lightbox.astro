@@ -1,0 +1,23 @@
+---
+import Icon from '../ui/Icon.astro';
+---
+
+<dialog class="lightbox" id="lightbox" aria-label="사진 크게 보기">
+  <figure>
+    <img src="data:," alt="" />
+    <!-- Announces the new caption and position when the photo changes -->
+    <figcaption aria-live="polite">
+      <span class="lb-caption"></span>
+      <span class="lb-count mono"></span>
+    </figcaption>
+  </figure>
+  <button class="lb-btn lb-prev" type="button" aria-label="이전 사진">
+    <Icon name="chev-left" />
+  </button>
+  <button class="lb-btn lb-next" type="button" aria-label="다음 사진">
+    <Icon name="chev-right" />
+  </button>
+  <button class="lb-close" type="button" aria-label="닫기">
+    <Icon name="close" />
+  </button>
+</dialog>

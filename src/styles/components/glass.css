@@ -1,0 +1,19 @@
+/* Liquid glass surfaces */
+.glass {
+  background: var(--glass-fill);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-rim), var(--glass-shadow);
+}
+
+.glass--strong {
+  background: var(--glass-fill-strong);
+}
+
+.glass--dark {
+  background: rgba(var(--white-rgb), 0.06);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(var(--white-rgb), 0.14),
+    inset 0 0 0 1px rgba(var(--white-rgb), 0.1),
+    0 24px 48px -30px rgba(var(--black-rgb), 0.45);
+}

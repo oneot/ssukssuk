@@ -1,0 +1,87 @@
+---
+import { support } from '../../data/content';
+import { tel } from '../../data/site';
+import type { IconName } from '../ui/icons';
+import Icon from '../ui/Icon.astro';
+
+const steps: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: 'seed',
+    title: '상담 문의',
+    text: '전화로 편하게 문의해 주세요. 아이의 이야기를 먼저 듣고 방문 일정을 함께 잡습니다.',
+  },
+  {
+    icon: 'sprout-s',
+    title: '초기 상담 · 발달 평가',
+    text: '보호자 상담과 함께 아이의 언어, 감각, 운동, 인지 발달을 꼼꼼히 살펴봅니다.',
+  },
+  { icon: 'sprout', title: '1:1 맞춤 프로그램', text: '평가 결과와 아이의 성향에 맞춰 치료와 활동 계획을 세웁니다.' },
+  {
+    icon: 'sprout',
+    title: '함께 나누는 성장',
+    text: '수업 후 보호자와 과정을 나누고, 아이의 변화에 맞춰 다음 걸음을 준비합니다.',
+  },
+];
+---
+
+<section class="section guide" id="guide">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <p class="eyebrow">
+        <Icon name="sprout" />
+        Step by step
+      </p>
+      <h2>
+        처음이어도 괜찮아요.
+        <br />한 걸음씩 안내해 드릴게요.
+      </h2>
+    </header>
+
+    <div class="guide-grid">
+      <ol class="stem" data-reveal>
+        {steps.map((step, index) => (
+          <li class="stem-step">
+            <span class="stem-node">
+              <Icon name={step.icon} />
+            </span>
+            <div>
+              <span class="mono">Step {String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <aside class="support glass glass--strong" data-reveal data-reveal-delay="1" aria-labelledby="support-title">
+        <h3 id="support-title">이용할 수 있는 지원 제도</h3>
+        <ul class="support-list">
+          {support.map((item) => (
+            <li>
+              <span class:list={['s-ic', item.color === 'pink' && 's-ic--pink']}>
+                <Icon name={item.icon} />
+              </span>
+              <span>
+                <span class="s-org">{item.org}</span>
+                <b>{item.name}</b>
+                <small>{item.place}</small>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p class="support-note">
+          <Icon name="sprout" />
+          <span>이용 대상·자격·본인부담금은 제도마다 달라요. 상담 때 자세히 안내해 드립니다.</span>
+        </p>
+        <p class="support-note">
+          <Icon name="clock" />
+          <span>운영시간과 상담 가능 시간은 전화 또는 네이버 지도에서 확인하실 수 있어요.</span>
+        </p>
+        <a class="btn btn--primary btn--lg" href={tel}>
+          <Icon name="phone" />
+          전화로 상담 예약
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>

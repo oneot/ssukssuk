@@ -1,0 +1,57 @@
+---
+import { Picture } from 'astro:assets';
+import { gallery } from '../../data/content';
+import { lightboxPhoto, photo, PHOTO_WIDTHS, pictureFormats } from '../../data/photos';
+import Icon from '../ui/Icon.astro';
+
+// How wide each slot's photo is drawn (the CSS crops it to the slot's shape).
+// Desktop: a fixed collage; below 1024px, two columns where party and digital
+// span the full width and the square tiles crop the sides of a 4:3 photo.
+const sizes: Record<string, string> = {
+  music: '(min-width: 1024px) 330px, 60vw',
+  horse: '(min-width: 1024px) 450px, 60vw',
+  party: '(min-width: 1024px) 310px, 90vw',
+  vr: '(min-width: 1024px) 300px, 60vw',
+  simulator: '(min-width: 1024px) 470px, 60vw',
+  digital: '(min-width: 1024px) 260px, 90vw',
+};
+
+const tiles = await Promise.all(
+  gallery.map(async (tile) => {
+    const image = photo(tile.photo);
+    return { ...tile, image, full: await lightboxPhoto(image) };
+  }),
+);
+---
+
+<section class="section moments" id="moments">
+  <div class="container">
+    <div class="collage">
+      <header class="collage-head" data-reveal>
+        <p class="eyebrow">
+          <Icon name="sprout" />
+          Moments
+        </p>
+        <h2>쑥쑥의 순간들</h2>
+        <p class="serif">Little moments, big growth.</p>
+        <p class="hint">사진을 누르면 크게 볼 수 있어요.</p>
+      </header>
+      {tiles.map(({ slot, alt, caption, image, full }) => (
+        <a class={`tile t-${slot}`} href={full} data-lightbox data-caption={caption}>
+          <Picture
+            src={image}
+            {...pictureFormats}
+            widths={PHOTO_WIDTHS}
+            sizes={sizes[slot]}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="tile-chip glass glass--strong" aria-hidden="true">
+            {caption}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

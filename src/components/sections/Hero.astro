@@ -1,0 +1,121 @@
+---
+import { Picture } from 'astro:assets';
+import { hero, photo, pictureFormats } from '../../data/photos';
+import { buildingAndFloors, tel } from '../../data/site';
+import GovEmblem from '../ui/GovEmblem.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow--kr">
+        <Icon name="sprout" />
+        대전 송촌동 · 아동청소년 발달센터
+      </p>
+      <h1 class="hero-title">
+        아이의 속도로,
+        <br />한 걸음씩{' '}
+        <span class="leafline">
+          <span>
+            쑥쑥<span class="dot">.</span>
+          </span>
+          <svg viewBox="0 0 300 44" preserveAspectRatio="none" aria-hidden="true">
+            <path
+              class="ll-path"
+              pathLength="1"
+              d="M6 31C70 20 146 38 226 26"
+              stroke="currentColor"
+              stroke-width="7"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <g class="ll-leaf">
+              <path d="M224 27C233 7 260 0 296 4c-9 21-37 31-72 23z" fill="currentColor" />
+              <path
+                d="M232 24c17-8 36-14 56-17"
+                stroke="#fff"
+                stroke-width="2.2"
+                fill="none"
+                stroke-linecap="round"
+                opacity=".9"
+              />
+            </g>
+          </svg>
+        </span>
+      </h1>
+      <p class="hero-lead">
+        발달재활 치료부터 움직임 스튜디오, 승마·VR 체험까지.
+        <br /> 한 건물 안에서 우리 아이의 성장을 함께 설계합니다.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn--primary btn--lg" href={tel}>
+          <Icon name="phone" />
+          상담 예약하기
+        </a>
+        <a class="btn btn--ghost btn--lg" href="#programs">
+          프로그램 둘러보기
+          <Icon name="arrow" />
+        </a>
+      </div>
+      <ul class="hero-trust">
+        <li>
+          <span class="mohw">
+            <GovEmblem size={20} />
+            보건복지부
+          </span>{' '}
+          사회서비스 제공기관
+        </li>
+        <li>
+          <Icon name="pin" />
+          {buildingAndFloors}
+        </li>
+      </ul>
+    </div>
+
+    <div class="hero-media">
+      <div class="leaf-bg" aria-hidden="true"></div>
+      <figure class="leaf-frame">
+        <Picture
+          src={hero.image}
+          {...pictureFormats}
+          widths={hero.widths}
+          sizes={hero.sizes}
+          alt="선생님과 아이들이 손을 잡고 겨울 언덕길을 함께 걸어 내려오는 모습"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <div class="hero-circle" aria-hidden="true">
+        <Picture
+          src={photo('hero-circle.webp')}
+          {...pictureFormats}
+          widths={[160, 320, 480]}
+          sizes="(min-width: 1024px) 170px, (min-width: 768px) 141px, 23vw"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <Icon name="doodle" class="hero-doodle" />
+      <Icon name="heart" class="hero-heart" />
+      <div class="float-badge fb-1 glass glass--strong">
+        <span class="badge-ic">
+          <Icon name="check" />
+        </span>
+        <span>
+          1:1 맞춤 발달재활<small>언어 · 감각통합 · 인지 · 운동</small>
+        </span>
+      </div>
+      <div class="float-badge fb-2 glass glass--strong">
+        <span class="badge-ic badge-ic--pink">
+          <Icon name="sprout" />
+        </span>
+        <span>
+          승마 · VR · 음악 활동<small>몸으로 배우는 프로그램</small>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

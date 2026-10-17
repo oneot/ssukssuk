@@ -1,0 +1,10 @@
+dist/
+.astro/
+.baseline/
+test-results/
+playwright-report/
+visual-results/
+.lighthouseci/
+package-lock.json
+# Google Fonts' CSS exactly as served (see scripts/vendor-google-fonts.mjs).
+src/assets/fonts/google/

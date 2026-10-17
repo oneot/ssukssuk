@@ -1,0 +1,352 @@
+/* Moments: collage gallery and its lightbox */
+.moments {
+  padding-bottom: calc(var(--section-y) - 20px);
+  background:
+    radial-gradient(24% 30% at 50% 36%, rgba(var(--blush-rgb), 0.2), rgba(var(--blush-rgb), 0) 70%),
+    radial-gradient(20% 28% at 10% 84%, rgba(var(--sprout-rgb), 0.1), rgba(var(--sprout-rgb), 0) 70%),
+    radial-gradient(20% 26% at 92% 12%, rgba(var(--blush-rgb), 0.12), rgba(var(--blush-rgb), 0) 70%);
+}
+
+.collage {
+  position: relative;
+  aspect-ratio: 1200 / 740;
+}
+
+.collage-head {
+  position: absolute;
+  left: 30%;
+  top: 22%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+
+  & h2 {
+    font-size: clamp(36px, 4.4vw, 56px);
+    letter-spacing: -0.045em;
+  }
+
+  & .serif {
+    font-size: clamp(24px, 2.4vw, 32px);
+    color: var(--blush-deep);
+    line-height: 1.1;
+  }
+
+  & .hint {
+    font-size: 15px;
+    color: var(--ink-3);
+  }
+}
+
+.tile {
+  position: absolute;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 5px solid rgba(var(--white-rgb), 0.62);
+  background-color: transparent;
+  backdrop-filter: blur(14px) saturate(170%);
+  box-shadow:
+    0 0 0 1px rgba(var(--shade-rgb), 0.05),
+    0 30px 60px -36px rgba(var(--ink-rgb), 0.55);
+  transition:
+    scale 0.5s var(--ease),
+    box-shadow 0.5s var(--ease),
+    rotate 0.5s var(--ease);
+
+  & picture {
+    height: 100%;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    scale: 1.035;
+    rotate: 0deg;
+    box-shadow:
+      0 0 0 1px rgba(var(--blush-deep-rgb), 0.25),
+      0 40px 70px -36px rgba(var(--blush-deep-rgb), 0.55);
+    z-index: 2;
+  }
+}
+
+.tile-chip {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  opacity: 0;
+  translate: 0 8px;
+  transition:
+    opacity 0.35s var(--ease),
+    translate 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.tile:hover .tile-chip,
+.tile:focus-visible .tile-chip {
+  opacity: 1;
+  translate: none;
+}
+
+.t-simulator .tile-chip {
+  left: auto;
+  right: 14px;
+}
+
+/* The six collage slots (see src/content/gallery.yaml) */
+.t-music {
+  left: 1.5%;
+  top: 1%;
+  width: 27%;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px;
+  rotate: -3deg;
+}
+
+.t-horse {
+  left: 0;
+  top: 44%;
+  width: 23%;
+  aspect-ratio: 5 / 6;
+  border-radius: 50% 7% / 40% 6%;
+}
+
+.t-party {
+  left: 27%;
+  top: 66%;
+  width: 23%;
+  aspect-ratio: 16 / 10;
+  border-radius: 22px;
+  rotate: 2deg;
+}
+
+.t-vr {
+  right: 1.5%;
+  top: 1%;
+  width: 25%;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px;
+  rotate: 3deg;
+}
+
+.t-simulator {
+  right: 0;
+  top: 41%;
+  width: 24%;
+  aspect-ratio: 5 / 6;
+  border-radius: 7% 50% / 6% 40%;
+}
+
+.t-digital {
+  right: 27.5%;
+  top: 69%;
+  width: 21%;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px;
+  rotate: -2deg;
+}
+
+.t-horse img {
+  object-position: 38% 50%;
+}
+
+.t-simulator img {
+  object-position: 40% 50%;
+}
+
+.lightbox {
+  width: min(1100px, 94vw);
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  overflow: visible;
+  color: var(--white);
+
+  &::backdrop {
+    background: rgba(var(--night-rgb), 0.88);
+    backdrop-filter: blur(6px);
+  }
+
+  & figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  & img {
+    max-height: 76vh;
+    width: auto;
+    max-width: 100%;
+    border-radius: 18px;
+    background: var(--charcoal);
+  }
+
+  & figcaption {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(var(--white-rgb), 0.12);
+    backdrop-filter: blur(16px);
+    box-shadow:
+      inset 0 1px 0 rgba(var(--white-rgb), 0.25),
+      inset 0 0 0 1px rgba(var(--white-rgb), 0.12);
+  }
+
+  & figcaption .mono {
+    font-size: 13px;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+}
+
+.lb-btn,
+.lb-close {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--white);
+  background: rgba(var(--white-rgb), 0.16);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(var(--white-rgb), 0.4),
+    inset 0 0 0 1px rgba(var(--white-rgb), 0.2),
+    0 12px 30px -12px rgba(var(--black-rgb), 0.55);
+  transition: background-color 0.2s;
+}
+
+.lb-btn:hover,
+.lb-close:hover {
+  background-color: rgba(var(--white-rgb), 0.26);
+}
+
+.lb-btn {
+  top: calc(38vh - 26px);
+  width: 52px;
+  height: 52px;
+
+  & .icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.lb-prev {
+  left: -72px;
+}
+
+.lb-next {
+  right: -72px;
+}
+
+.lb-close {
+  top: -56px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+
+  & .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .collage {
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .collage-head {
+    position: static;
+    grid-column: 1 / -1;
+    width: auto;
+    margin-bottom: 20px;
+  }
+
+  .tile {
+    position: static;
+    width: auto;
+    rotate: 0deg;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    box-shadow: none;
+  }
+
+  .t-horse,
+  .t-simulator {
+    aspect-ratio: 1;
+  }
+
+  .t-party,
+  .t-digital {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+
+  .t-music {
+    order: 1;
+  }
+
+  .t-horse {
+    order: 2;
+  }
+
+  .t-party {
+    order: 3;
+  }
+
+  .t-vr {
+    order: 4;
+  }
+
+  .t-simulator {
+    order: 5;
+  }
+
+  .t-digital {
+    order: 6;
+  }
+
+  .lb-btn {
+    top: auto;
+    bottom: -68px;
+  }
+
+  .lb-prev {
+    left: calc(50% - 64px);
+  }
+
+  .lb-next {
+    right: calc(50% - 64px);
+  }
+}

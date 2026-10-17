@@ -1,0 +1,61 @@
+---
+import pretendardFull from 'pretendard/dist/web/variable/woff2/PretendardVariable.woff2?url';
+import { FACES_PLACEHOLDER, PRELOAD_PLACEHOLDER } from '../../integrations/pretendard-slices.mjs';
+import IconSprite from '../components/ui/IconSprite.astro';
+import { googleFontFaces } from '../fonts/google';
+import '../styles/index.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  viewport?: string;
+}
+
+const {
+  title,
+  description,
+  noindex = false,
+  viewport = 'width=device-width, initial-scale=1, viewport-fit=cover',
+} = Astro.props;
+
+// Pretendard keeps the CDN stylesheet's family name, weight range and
+// font-display. The full font is the fallback; in builds the trimmed slices
+// declared after it render every character on the site
+// (integrations/pretendard-slices.mjs fills in the placeholders).
+const slices = import.meta.env.PROD;
+const fontFaces = [
+  `@font-face{font-family:"Pretendard Variable";font-style:normal;font-weight:45 920;font-display:swap;src:url(${pretendardFull}) format("woff2-variations")}`,
+  slices && FACES_PLACEHOLDER,
+  googleFontFaces,
+]
+  .filter(Boolean)
+  .join('');
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content={viewport} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
+    <slot name="meta" />
+
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+    {slices && <link rel="preload" href={PRELOAD_PLACEHOLDER} as="font" type="font/woff2" crossorigin />}
+    <style is:inline set:html={fontFaces} />
+    <slot name="head" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <IconSprite />
+    <slot />
+  </body>
+</html>

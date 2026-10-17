@@ -1,0 +1,17 @@
+---
+// The government emblem next to "보건복지부" (hero trust line and footer). The
+// CSS sizes it to the text (1.15em, about 17px). One lossless 48px copy of the
+// 96px original covers screens up to about 2.8x; in Chromium it renders exactly
+// like the original (which the browser downscales through a 48px step).
+import { getImage } from 'astro:assets';
+import original from '../../assets/images/gov-emblem.png';
+
+interface Props {
+  size: number;
+}
+
+const { size } = Astro.props;
+const emblem = await getImage({ src: original, width: 48, height: 48, format: 'png' });
+---
+
+<img src={emblem.src} alt="" width={size} height={size} />

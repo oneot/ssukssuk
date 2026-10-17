@@ -1,0 +1,30 @@
+---
+import { footerGrass } from '../../data/grass';
+import { fullAddress, site, tel } from '../../data/site';
+import GovEmblem from '../ui/GovEmblem.astro';
+import Grass from '../ui/Grass.astro';
+---
+
+<footer class="site-footer">
+  <Grass class="footer-grass" blades={footerGrass} hidden />
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/assets/img/logo.svg" alt="쑥쑥 아동청소년발달센터" width="178" height="36" loading="lazy" />
+      <p class="serif">Grow up, step by step.</p>
+    </div>
+    <div class="footer-info">
+      <p>{fullAddress}</p>
+      <p>
+        T. <a href={tel}>{site.phone}</a>
+      </p>
+      <p>
+        <span class="mohw">
+          <GovEmblem size={16} />
+          보건복지부
+        </span>{' '}
+        사회서비스 제공기관
+      </p>
+      <p class="footer-copy">© 2026 SsukSsuk Development Center. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

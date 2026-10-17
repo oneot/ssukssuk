@@ -1,0 +1,51 @@
+/* Shared section spacing and headings */
+.section {
+  padding-block: var(--section-y);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 760px;
+  margin-bottom: clamp(44px, 6vw, 72px);
+
+  & h2 {
+    font-size: clamp(32px, 4.2vw, 52px);
+    line-height: 1.2;
+    letter-spacing: -0.042em;
+  }
+
+  & p {
+    font-size: clamp(16.5px, 1.4vw, 18.5px);
+    color: var(--ink-2);
+    max-width: 38em;
+  }
+}
+
+.section-head--split {
+  max-width: none;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  & p {
+    max-width: 30em;
+    padding-bottom: 6px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section-head--split {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+}

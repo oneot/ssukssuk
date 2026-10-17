@@ -1,0 +1,41 @@
+# 프로그램(Programs)
+#
+# therapy: 발달재활 치료 카드 (아이콘 카드)
+#   - icon: 아이콘 이름 (src/components/ui/icons.ts에 있는 이름. 예: shapes, chat, check)
+#   - color: green 또는 pink (아이콘 배경색)
+#   - chips: 카드 아래 동그란 꼬리표
+# activities: 몸으로 배우는 활동 카드 (사진 카드)
+#   - photo: src/assets/photos 폴더의 사진 파일 이름
+#   - alt: 사진을 볼 수 없는 분께 읽어 주는 설명 (사진이 바뀌면 함께 바꿔 주세요)
+
+therapy:
+  label: 01 · Therapy
+  title: 발달재활 치료
+  cards:
+    - icon: shapes
+      color: green
+      title: 감각통합 · 인지치료
+      text: 뇌의 균형 잡힌 발달을 위해 다양한 감각 자극을 조절하는 훈련입니다. 대근육 활동과 미세 운동을 통해 신체 조절 능력을 키웁니다.
+      chips: [감각 조절, 대근육, 미세 운동, 인지]
+    - icon: chat
+      color: pink
+      title: 언어 · 놀이치료
+      text: 놀이를 통해 마음을 열고, 타인과 소통하는 언어 능력을 확장합니다.
+      chips: [언어, 의사소통, 놀이, 정서]
+
+activities:
+  label: 02 · Activities
+  title: 몸으로 배우는 활동
+  cards:
+    - photo: horse.webp
+      alt: 실내 승마장에서 선생님이 말을 이끌고 아이가 승마하는 모습
+      title: 승마 활동
+      text: 말과의 교감을 통해 정서 안정과 자신감을 돕고, 균형감각과 신체 발달을 자연스럽게 지원합니다.
+    - photo: vr.webp
+      alt: VR 헤드셋을 쓰고 가상 축구를 즐기며 웃는 아이
+      title: VR 활동
+      text: 가상현실 환경에서 신체 감각과 공간 인식을 자극하며, 몰입형 체험을 통해 집중력과 인지 능력 향상을 돕습니다.
+    - photo: music.webp
+      alt: 루돌프 머리띠를 한 아이들이 우쿨렐레와 마이크로 노래하는 모습
+      title: 음악 · 예술 활동
+      text: 드럼, 장구, 미술 등 예술적 표현을 통해 정서를 이완하고 자신감을 회복합니다.

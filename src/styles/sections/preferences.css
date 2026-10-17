@@ -1,0 +1,56 @@
+/*
+ * Fallbacks and user preferences. These stay last so they override the
+ * section rules above exactly as before (same layer, so specificity still
+ * decides between them).
+ */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass,
+  .glass--strong,
+  .btn--ghost {
+    background: rgba(var(--white-rgb), 0.94);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass--strong,
+  .glass--dark,
+  .btn--ghost,
+  .btn--outline-light,
+  .stem-node,
+  .tile,
+  .hero-circle,
+  .lb-btn,
+  .lb-close {
+    backdrop-filter: none;
+  }
+
+  .glass,
+  .glass--strong,
+  .btn--ghost {
+    background: var(--white);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .leafline .ll-path {
+    stroke-dashoffset: 0;
+  }
+
+  .leafline .ll-leaf {
+    transform: none;
+  }
+}

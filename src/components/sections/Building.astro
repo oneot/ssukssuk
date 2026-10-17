@@ -1,0 +1,36 @@
+---
+import { floors } from '../../data/content';
+import { buildingGrass } from '../../data/grass';
+import { site } from '../../data/site';
+import { withLineBreaks } from '../../utils/html';
+import Grass from '../ui/Grass.astro';
+
+const [upperLeft, upperRight, lower] = floors;
+const { address } = site;
+---
+
+<div class="building" aria-hidden="true" data-reveal>
+  <img class="building-sign" src="/assets/img/symbol.svg" alt="" width="132" height="85" />
+  <div class="building-roof"></div>
+  <div class="building-body glass">
+    <div class="building-row">
+      {[upperLeft, upperRight].map((floor) => (
+        <div class="room" data-room={floor.room}>
+          <span class="fl">{floor.level}</span>
+          <b set:html={withLineBreaks(floor.sign)} />
+        </div>
+      ))}
+    </div>
+    <div class="room room--wide" data-room={lower.room}>
+      <span class="fl">{lower.level}</span>
+      <b set:html={withLineBreaks(lower.sign)} />
+      <span class="room-door"></span>
+    </div>
+  </div>
+  <div class="building-ground">
+    <Grass blades={buildingGrass} />
+  </div>
+  <p class="building-addr">
+    {address.district} {address.road} · {address.building}
+  </p>
+</div>

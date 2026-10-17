@@ -1,0 +1,6 @@
+# Browsers the CSS build targets (vendor prefixes, syntax lowering).
+# Everyone above 0.3% of visitors in Korea, plus every iOS Safari that
+# supports cascade layers (@layer), which the stylesheet relies on.
+> 0.3% in KR
+iOS >= 15.4
+not dead
