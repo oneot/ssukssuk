@@ -245,3 +245,32 @@ for (const side of SIDES) {
     });
   });
 }
+
+// Improvements that only the new build has.
+test.describe('lightbox improvements', () => {
+  test.use({ baseURL: SITES.target });
+
+  test('screen readers hear the new caption and position when the photo changes', async ({ page }) => {
+    await page.goto('/');
+    const caption = page.locator('#lightbox figcaption');
+    await expect(caption).toHaveAttribute('aria-live', 'polite');
+    await openLightbox(page, 0);
+    await page.keyboard.press('ArrowRight');
+    await expect(caption).toContainText((await page.locator('[data-lightbox]').nth(1).getAttribute('data-caption'))!);
+    await expect(caption).toContainText('2 / 6');
+  });
+
+  test('the photos on either side are fetched in advance', async ({ page }) => {
+    await page.goto('/');
+    const hrefs = await page
+      .locator('[data-lightbox]')
+      .evaluateAll((tiles) => tiles.map((tile) => (tile as HTMLAnchorElement).href));
+    const requested = new Set<string>();
+    page.on('request', (request) => requested.add(request.url()));
+
+    await openLightbox(page, 0);
+    // Wraps around: before the first photo comes the last one.
+    await expect.poll(() => [hrefs[5], hrefs[1]].every((href) => requested.has(href))).toBe(true);
+    expect(requested.has(hrefs[3])).toBe(false);
+  });
+});

@@ -7,5 +7,3 @@ visual-results/
 .lighthouseci/
 package-lock.json
 tests/fixtures/
-# Original script, converted to TypeScript modules in phase 4.
-public/assets/js/main.js

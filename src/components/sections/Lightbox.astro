@@ -5,7 +5,8 @@ import Icon from '../ui/Icon.astro';
 <dialog class="lightbox" id="lightbox" aria-label="사진 크게 보기">
   <figure>
     <img src="data:," alt="" />
-    <figcaption>
+    <!-- Announces the new caption and position when the photo changes -->
+    <figcaption aria-live="polite">
       <span class="lb-caption"></span>
       <span class="lb-count mono"></span>
     </figcaption>
