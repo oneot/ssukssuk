@@ -2,6 +2,8 @@ name: CI
 
 on:
   pull_request:
+    # Re-run when the `design-change` label is added or removed.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches: [main]
   workflow_dispatch:
@@ -17,30 +19,8 @@ jobs:
   build:
     name: Lint & build
     runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - run: npm run validate
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: dist
-          path: dist/
-          retention-days: 7
-
-  test:
-    name: Test (${{ matrix.browser }})
-    needs: build
-    runs-on: ubuntu-24.04
-    strategy:
-      fail-fast: false
-      matrix:
-        browser: [chromium, webkit]
+    outputs:
+      design-lock: ${{ steps.scope.outputs.mode }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -50,20 +30,95 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run validate
+      - name: Build the baseline (merge base with main)
+        run: npm run baseline
+      - name: Decide how strict the design lock is
+        id: scope
+        env:
+          DESIGN_CHANGE_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'design-change') }}
+        run: |
+          # Text, photo and contact-detail edits are expected to look different, so
+          # the design lock only reports them. Code changes must match pixel for pixel.
+          changed=$(git diff --name-only "$(jq -r .sha .baseline/info.json)" HEAD)
+          content_only=false
+          if [ -n "$changed" ] && ! grep -qvE '^(src/content/|src/assets/photos/|src/data/site\.ts$|README\.md$)' <<< "$changed"; then
+            content_only=true
+          fi
+          mode=strict
+          if [ "$DESIGN_CHANGE_LABEL" = true ] || [ "$content_only" = true ]; then mode=report; fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "Design lock: **$mode** (content-only change: $content_only, design-change label: $DESIGN_CHANGE_LABEL)" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sites
+          path: |
+            dist/
+            .baseline/info.json
+            .baseline/site/
+          include-hidden-files: true
+          retention-days: 7
+
+  behaviour:
+    name: Behaviour & accessibility (${{ matrix.browser }})
+    needs: build
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: dist
-          path: dist/
+          name: sites
       - run: npx playwright install --with-deps ${{ matrix.browser }}
-      - run: npm run baseline
-      - run: npx playwright test --project=visual-${{ matrix.browser }} --project=e2e-${{ matrix.browser }}
+      - run: npx playwright test --project=e2e-${{ matrix.browser }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: failure()
+        with:
+          name: behaviour-${{ matrix.browser }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  design-lock:
+    name: Design lock (${{ matrix.browser }})
+    needs: build
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: sites
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npx playwright test --project=visual-${{ matrix.browser }}
+        env:
+          DESIGN_LOCK: ${{ needs.build.outputs.design-lock }}
       - name: Visual comparison summary
         if: always()
         run: node scripts/visual-summary.mjs >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
-          name: test-results-${{ matrix.browser }}
+          name: design-lock-${{ matrix.browser }}
           path: |
             visual-results/
             playwright-report/
@@ -83,12 +138,12 @@ jobs:
       - run: npm ci
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: dist
-          path: dist/
+          name: sites
       - run: npx lhci autorun
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: lighthouse
           path: .lighthouseci/
+          include-hidden-files: true
           retention-days: 14

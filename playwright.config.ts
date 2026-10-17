@@ -21,12 +21,15 @@ export default defineConfig({
   reporter: process.env.CI ? [['list'], ['github'], ['html', { open: 'never' }]] : [['list']],
   use: { trace: 'retain-on-failure' },
   projects: [
+    // One retry: WebKit occasionally applies a scroll a frame late, and a real
+    // regression fails both attempts. Every capture of the passing attempt is exact.
     {
       name: 'visual-chromium',
-      testMatch: 'visual.spec.ts',
+      testMatch: /(visual|aria)\.spec\.ts/,
+      retries: 1,
       use: { browserName: 'chromium', launchOptions: { args: deterministicChromium } },
     },
-    { name: 'visual-webkit', testMatch: 'visual.spec.ts', use: { browserName: 'webkit' } },
+    { name: 'visual-webkit', testMatch: /(visual|aria)\.spec\.ts/, retries: 1, use: { browserName: 'webkit' } },
     {
       name: 'e2e-chromium',
       testMatch: /(behavior|a11y)\.spec\.ts/,

@@ -64,18 +64,3 @@ for (const state of STATES) {
     expect(ids.target.filter((id) => !ids.baseline.includes(id))).toEqual([]);
   });
 }
-
-// Asset URLs may change (hashed, re-encoded files); everything else in the
-// accessibility tree, including link targets, must stay the same.
-const normalise = (snapshot: string) => snapshot.replace(/(\/url: )\S+\.(?:webp|avif|jpe?g|png|svg)\b/g, '$1<image>');
-
-for (const state of STATES.filter((s) => !s.prepare)) {
-  test(`accessibility tree matches the baseline: ${state.name}`, async ({ page }) => {
-    const snapshots: Partial<Record<Side, string>> = {};
-    for (const side of ['baseline', 'target'] as const) {
-      await open(page, side, state);
-      snapshots[side] = normalise(await page.locator('body').ariaSnapshot());
-    }
-    expect(snapshots.target).toBe(snapshots.baseline);
-  });
-}

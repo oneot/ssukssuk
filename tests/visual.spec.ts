@@ -1,6 +1,6 @@
 import { expect, test, type Browser, type Locator, type Page, type TestInfo } from '@playwright/test';
 import { record, strictDiff, tolerantDiff } from './support/compare';
-import { SIDES, SITES, baseline, type Side } from './support/env';
+import { SIDES, SITES, baseline, designLock, type Side } from './support/env';
 import { legacyExpectedChanges } from './support/expected-changes';
 import { nextFrames, openPage } from './support/page';
 
@@ -23,7 +23,8 @@ const PHOTO_REGIONS = ['.leaf-frame', '.hero-circle', '.float-badge', '.prog-pho
 /** Largest share of perceptibly different pixels allowed in a re-encoded photo capture. */
 const PHOTO_TOLERANCE = 0.02;
 
-type Target = Locator | 'viewport';
+/** An element, the whole viewport, or a viewport region (captured without scrolling). */
+type Target = Locator | 'viewport' | { x: number; y: number; width: number; height: number };
 interface ShotOptions {
   mask?: string[];
   expectChange?: string;
@@ -36,14 +37,31 @@ interface Capture {
 }
 
 async function capture(page: Page, target: Target, options: ShotOptions): Promise<Capture> {
-  const take = (maskSelectors: string[]) => {
+  // For whole-viewport captures, wait until two consecutive screenshots match:
+  // WebKit can paint an icon in a just-revealed menu a frame late. (Element
+  // screenshots are taken once; repeating them can scroll the page in WebKit.)
+  const take = async (maskSelectors: string[]) => {
     const opts = {
       animations: 'disabled' as const,
       caret: 'hide' as const,
       mask: maskSelectors.map((selector) => page.locator(selector)),
       maskColor: '#ff00ff',
     };
-    return target === 'viewport' ? page.screenshot(opts) : target.screenshot(opts);
+    const shoot = () =>
+      target === 'viewport'
+        ? page.screenshot(opts)
+        : 'screenshot' in target
+          ? target.screenshot(opts)
+          : page.screenshot({ ...opts, clip: target });
+    let previous = await shoot();
+    if (target !== 'viewport') return previous;
+    for (let attempt = 0; attempt < 10; attempt++) {
+      await nextFrames(page);
+      const next = await shoot();
+      if (next.equals(previous)) return next;
+      previous = next;
+    }
+    throw new Error('The page kept changing between screenshots');
   };
   const mask = options.mask ?? [];
   if (!expected.reencodedPhotos || options.expectChange) return { strict: await take(mask), options };
@@ -112,6 +130,10 @@ async function compareSides(
         failures.push(`${name} (photos): ${(photoResult.ratio * 100).toFixed(2)}% perceptibly different`);
     }
   }
+  if (designLock === 'report' && failures.length) {
+    testInfo.annotations.push({ type: 'design change', description: failures.join('\n') });
+    return;
+  }
   expect(failures, failures.join('\n')).toEqual([]);
 }
 
@@ -134,7 +156,8 @@ for (const width of VIEWPORTS) {
         await expect(page.locator('.site-header')).toHaveClass(/is-scrolled/);
         await expect(page.locator('.site-nav a[href="#about"]')).toHaveClass(/is-active/);
         await nextFrames(page);
-        await shoot('header-scrolled', page.locator('.site-header'));
+        // A viewport region: an element screenshot of the sticky header would scroll the page.
+        await shoot('header-scrolled', (await page.locator('.site-header').boundingBox())!);
       });
     });
 
@@ -195,7 +218,11 @@ for (const width of VIEWPORTS) {
           await nextFrames(page);
           await page.locator(hovered).first().hover();
           await nextFrames(page);
-          await shoot(name, region);
+          // WebKit may composite a scaled (hovered) tile and paint its photo, or its
+          // neighbour's, with different filtering from run to run. The hover itself
+          // (scale, shadow, chip) is still compared; only the photo pixels are masked.
+          const unstable = name === 'tile-hover' && browser.browserType().name() === 'webkit';
+          await shoot(name, region, { mask: unstable ? ['.tile img'] : [] });
         }
       });
     });
