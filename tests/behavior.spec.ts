@@ -274,3 +274,33 @@ test.describe('lightbox improvements', () => {
     expect(requested.has(hrefs[3])).toBe(false);
   });
 });
+
+// Fonts are served by the site itself. The full Pretendard file is only the
+// fallback for characters outside the trimmed slices, so it should never load.
+test.describe('self-hosted fonts', () => {
+  test.use({ baseURL: SITES.target, viewport: { width: 390, height: 844 } });
+
+  test('every font comes from the site, and the trimmed Pretendard slices are enough', async ({ page }) => {
+    const fonts: string[] = [];
+    page.on('request', (request) => {
+      if (request.resourceType() === 'font') fonts.push(request.url());
+    });
+    const settle = () => page.evaluate(() => document.fonts.ready.then(() => undefined));
+
+    await page.goto('/');
+    await page.locator('.nav-toggle').click();
+    await expect(page.locator('#site-nav')).toBeVisible();
+    await page.keyboard.press('Escape');
+    await openLightbox(page, 0);
+    for (let i = 1; i < 6; i++) await page.keyboard.press('ArrowRight');
+    await settle();
+    await page.goto('/this-page-does-not-exist');
+    await expect(page.locator('h1')).toBeVisible();
+    await settle();
+
+    const origin = new URL(page.url()).origin;
+    expect(fonts.length).toBeGreaterThan(0);
+    expect(fonts.filter((url) => new URL(url).origin !== origin)).toEqual([]);
+    expect(fonts.filter((url) => /\/PretendardVariable\.[\w-]+\.woff2$/.test(url))).toEqual([]);
+  });
+});

@@ -3,8 +3,10 @@
 // - every internal link, asset reference and #fragment resolves
 // - JSON-LD parses
 // - no image carries EXIF/XMP metadata (photos show children; GPS must never ship)
+// - fonts are self-hosted and the trimmed Pretendard slices cover every character
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, posix, relative } from 'node:path';
+import { FACES_PLACEHOLDER, PRELOAD_PLACEHOLDER, renderedCharacters } from '../integrations/pretendard-slices.mjs';
 
 const DIST = 'dist';
 const ORIGIN = 'https://ssukssuk.org';
@@ -163,6 +165,35 @@ for (const file of files) {
   images++;
   const found = reader(readFileSync(file));
   if (found) errors.push(`${relative(DIST, file)} contains ${found} metadata`);
+}
+
+// --- fonts ----------------------------------------------------------------
+// Fonts are self-hosted, and the trimmed Pretendard slices must cover every
+// character a page can render (otherwise the 2 MB full font is fetched).
+const FONT_HOSTS = /fonts\.googleapis\.com|fonts\.gstatic\.com|cdn\.jsdelivr\.net/;
+for (const file of files.filter((f) => /\.(html|css|js)$/.test(f))) {
+  const text = readFileSync(file, 'utf8');
+  if (FONT_HOSTS.test(text)) errors.push(`${relative(DIST, file)} still references a third-party font host`);
+  if (text.includes(FACES_PLACEHOLDER) || text.includes(PRELOAD_PLACEHOLDER)) {
+    errors.push(`${relative(DIST, file)} has an unfilled Pretendard placeholder`);
+  }
+}
+const parseRange = (range) =>
+  range.split(',').map((part) => {
+    const [from, to = from] = part.trim().replace(/^U\+/i, '').split('-');
+    return [parseInt(from, 16), parseInt(to, 16)];
+  });
+for (const page of pages) {
+  const html = readFileSync(page, 'utf8');
+  const ranges = [
+    ...html.matchAll(/@font-face\{font-family:"Pretendard Variable";[^}]*unicode-range:([^;}]+)/g),
+  ].flatMap((m) => parseRange(m[1]));
+  if (!ranges.length) errors.push(`${relative(DIST, page)}: no trimmed Pretendard faces`);
+  const missing = [...renderedCharacters(html)].filter((char) => {
+    const code = char.codePointAt(0);
+    return !ranges.some(([from, to]) => code >= from && code <= to);
+  });
+  if (missing.length) errors.push(`${relative(DIST, page)}: no trimmed Pretendard face covers ${missing.join('')}`);
 }
 
 if (errors.length) {

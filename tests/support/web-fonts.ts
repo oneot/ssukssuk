@@ -7,9 +7,10 @@ import type { BrowserContext } from '@playwright/test';
 // - Pretendard: npm `pretendard@1.3.9` ships the same dynamic-subset CSS rules
 //   and woff2 files that jsDelivr serves for gh/orioncactus/pretendard@v1.3.9.
 // - Geist Mono / Instrument Serif: the files Google Fonts serves to iOS,
-//   Android and macOS (see scripts/vendor-google-fonts.mjs). Without this, CI
-//   on Linux would receive hinted or TTF variants that visitors never see.
-const GOOGLE_DIR = 'tests/fixtures/google-fonts';
+//   Android and macOS (see scripts/vendor-google-fonts.mjs), which the site
+//   now serves itself. Without this, CI on Linux would receive hinted or TTF
+//   variants that visitors never see.
+const GOOGLE_DIR = 'src/assets/fonts/google';
 const PRETENDARD_DIR = 'node_modules/pretendard/dist/web/variable';
 const JSDELIVR_PRETENDARD = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/';
 

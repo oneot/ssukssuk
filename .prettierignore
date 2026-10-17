@@ -6,4 +6,5 @@ playwright-report/
 visual-results/
 .lighthouseci/
 package-lock.json
-tests/fixtures/
+# Google Fonts' CSS exactly as served (see scripts/vendor-google-fonts.mjs).
+src/assets/fonts/google/

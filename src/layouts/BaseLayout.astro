@@ -1,6 +1,9 @@
 ---
-import '../styles/index.css';
+import pretendardFull from 'pretendard/dist/web/variable/woff2/PretendardVariable.woff2?url';
+import { FACES_PLACEHOLDER, PRELOAD_PLACEHOLDER } from '../../integrations/pretendard-slices.mjs';
 import IconSprite from '../components/ui/IconSprite.astro';
+import { googleFontFaces } from '../fonts/google';
+import '../styles/index.css';
 
 interface Props {
   title: string;
@@ -15,6 +18,19 @@ const {
   noindex = false,
   viewport = 'width=device-width, initial-scale=1, viewport-fit=cover',
 } = Astro.props;
+
+// Pretendard keeps the CDN stylesheet's family name, weight range and
+// font-display. The full font is the fallback; in builds the trimmed slices
+// declared after it render every character on the site
+// (integrations/pretendard-slices.mjs fills in the placeholders).
+const slices = import.meta.env.PROD;
+const fontFaces = [
+  `@font-face{font-family:"Pretendard Variable";font-style:normal;font-weight:45 920;font-display:swap;src:url(${pretendardFull}) format("woff2-variations")}`,
+  slices && FACES_PLACEHOLDER,
+  googleFontFaces,
+]
+  .filter(Boolean)
+  .join('');
 ---
 
 <!doctype html>
@@ -31,17 +47,8 @@ const {
     <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap"
-    />
+    {slices && <link rel="preload" href={PRELOAD_PLACEHOLDER} as="font" type="font/woff2" crossorigin />}
+    <style is:inline set:html={fontFaces} />
     <slot name="head" />
     <script is:inline>
       document.documentElement.classList.add('js');

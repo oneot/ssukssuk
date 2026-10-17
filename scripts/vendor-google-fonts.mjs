@@ -3,7 +3,8 @@
 // Linux/Windows Chrome get hinted files and Linux WebKit gets TTFs, so we pin
 // the user agent to keep the exact binaries most visitors already render.
 //
-// Usage: node scripts/vendor-google-fonts.mjs <out-dir>
+// Usage: node scripts/vendor-google-fonts.mjs src/assets/fonts/google
+// (the site serves these files; see src/fonts/google.ts)
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 

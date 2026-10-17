@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
+import pretendardSlices from './integrations/pretendard-slices.mjs';
 
 // .browserslistrc drives both Lightning CSS steps: transforming the source
 // (nesting, vendor prefixes) and minifying the bundle. Vite's minify step
@@ -16,6 +17,7 @@ const cssTarget = Object.entries(targets).flatMap(([browser, version]) =>
 
 export default defineConfig({
   site: 'https://ssukssuk.org',
+  integrations: [pretendardSlices()],
   // Whitespace follows JSX rules (Astro 7's default, also what prettier-plugin-astro
   // formats for): line breaks next to tags are dropped, spaces within a line are
   // kept, and {' '} keeps a space that a line break would otherwise remove.
