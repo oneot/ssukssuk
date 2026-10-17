@@ -64,11 +64,19 @@ jobs:
   behaviour:
     name: Behaviour & accessibility (${{ matrix.browser }})
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, webkit]
+        include:
+          - browser: chromium
+            os: ubuntu-24.04
+          # WebKit runs on macOS: that is the engine Safari visitors actually get. Linux
+          # WebKit (no GPU) takes minutes per frame once every glass panel is visible
+          # (reduced motion shows all of them at once) and times out on the old site too.
+          - browser: webkit
+            os: macos-15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -93,11 +101,16 @@ jobs:
   design-lock:
     name: Design lock (${{ matrix.browser }})
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, webkit]
+        include:
+          - browser: chromium
+            os: ubuntu-24.04
+          - browser: webkit # macOS, see the behaviour job
+            os: macos-15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
