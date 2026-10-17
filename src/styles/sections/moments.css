@@ -57,6 +57,10 @@
     box-shadow 0.5s var(--ease),
     rotate 0.5s var(--ease);
 
+  & picture {
+    height: 100%;
+  }
+
   & img {
     width: 100%;
     height: 100%;

@@ -24,6 +24,20 @@ export default defineConfig({
   compressHTML: 'jsx',
   // Component-scoped styles must not out-rank the global stylesheet (no +1 specificity).
   scopedStyleStrategy: 'where',
+  // Photo encoding. AVIF q60 rather than sharp's default 50: in the design-lock
+  // comparison against the old WebP files, q50 → q70 barely changed the result
+  // (the remaining differences come from resizing), so q60 buys some headroom
+  // for detail at a modest size cost. WebP is the fallback for Safari 15.
+  // Transformed images are cached in node_modules/.astro; clear it after changing these.
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        avif: { quality: 60 },
+        webp: { quality: 80 },
+      },
+    },
+  },
   build: {
     // Always link stylesheets: Astro emits inlined <style> before linked ones.
     inlineStylesheets: 'never',

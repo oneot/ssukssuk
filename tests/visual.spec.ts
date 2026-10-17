@@ -20,14 +20,23 @@ const expected = baseline.legacy ? legacyExpectedChanges : { doodleVeins: false,
 
 /** Elements whose pixels depend on photo data: the photos and the glass that blurs them. */
 const PHOTO_REGIONS = ['.leaf-frame', '.hero-circle', '.float-badge', '.prog-photo', '.tile', '.mohw img'];
-/** Largest share of perceptibly different pixels allowed in a re-encoded photo capture. */
-const PHOTO_TOLERANCE = 0.02;
+/** Fixed glass bars blur whatever is scrolled beneath them, photos included. */
+const FLOATING_GLASS = ['.site-header', '.mobile-cta'];
+/**
+ * Largest share of perceptibly different pixels allowed in a re-encoded photo capture.
+ * Measured worst case 2.1% (Chromium, 768px, a hovered gallery tile scaled 1.035x):
+ * edge-only differences from resizing (a 540px copy instead of the old 800px file),
+ * reviewed by eye per photo. AVIF q50-q70 barely changes it.
+ */
+const PHOTO_TOLERANCE = 0.03;
 
 /** An element, the whole viewport, or a viewport region (captured without scrolling). */
 type Target = Locator | 'viewport' | { x: number; y: number; width: number; height: number };
 interface ShotOptions {
   mask?: string[];
   expectChange?: string;
+  /** The capture scrolls content (and its photos) under the fixed header and mobile call bar. */
+  underFloatingGlass?: boolean;
 }
 type Shoot = (name: string, target: Target, options?: ShotOptions) => Promise<void>;
 interface Capture {
@@ -65,7 +74,8 @@ async function capture(page: Page, target: Target, options: ShotOptions): Promis
   };
   const mask = options.mask ?? [];
   if (!expected.reencodedPhotos || options.expectChange) return { strict: await take(mask), options };
-  return { strict: await take([...PHOTO_REGIONS, ...mask]), photo: await take(mask), options };
+  const photoRegions = options.underFloatingGlass ? [...PHOTO_REGIONS, ...FLOATING_GLASS] : PHOTO_REGIONS;
+  return { strict: await take([...photoRegions, ...mask]), photo: await take(mask), options };
 }
 
 async function compareSides(
@@ -145,7 +155,7 @@ for (const width of VIEWPORTS) {
           const section = page.locator(selector).first();
           await section.scrollIntoViewIfNeeded();
           await nextFrames(page);
-          await shoot(name, section);
+          await shoot(name, section, { underFloatingGlass: true });
         }
       });
     });
@@ -222,7 +232,7 @@ for (const width of VIEWPORTS) {
           // neighbour's, with different filtering from run to run. The hover itself
           // (scale, shadow, chip) is still compared; only the photo pixels are masked.
           const unstable = name === 'tile-hover' && browser.browserType().name() === 'webkit';
-          await shoot(name, region, { mask: unstable ? ['.tile img'] : [] });
+          await shoot(name, region, { mask: unstable ? ['.tile img'] : [], underFloatingGlass: true });
         }
       });
     });

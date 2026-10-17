@@ -1,6 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { programs } from '../../data/content';
-import { photo } from '../../data/photos';
+import { photo, PHOTO_WIDTHS, pictureFormats } from '../../data/photos';
 import Icon from '../ui/Icon.astro';
 
 const { therapy, activities } = programs;
@@ -55,29 +56,25 @@ const delay = (index: number) => (index > 0 ? String(index) : undefined);
         {activities.title}
       </h3>
       <div class="prog-activities">
-        {activities.cards.map((card, index) => {
-          const image = photo(card.photo);
-          return (
-            <article class="prog-card prog-card--photo glass" data-reveal data-reveal-delay={delay(index)}>
-              <div class="prog-photo">
-                <img
-                  src={image.small}
-                  srcset={`${image.small} 800w, ${image.large} 1440w`}
-                  sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw"
-                  width={image.width}
-                  height={image.height}
-                  alt={card.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="prog-body">
-                <h4>{card.title}</h4>
-                <p>{card.text}</p>
-              </div>
-            </article>
-          );
-        })}
+        {activities.cards.map((card, index) => (
+          <article class="prog-card prog-card--photo glass" data-reveal data-reveal-delay={delay(index)}>
+            <div class="prog-photo">
+              <Picture
+                src={photo(card.photo)}
+                {...pictureFormats}
+                widths={PHOTO_WIDTHS}
+                sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw"
+                alt={card.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="prog-body">
+              <h4>{card.title}</h4>
+              <p>{card.text}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </div>

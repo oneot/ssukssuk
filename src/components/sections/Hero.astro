@@ -1,5 +1,8 @@
 ---
+import { Picture } from 'astro:assets';
+import { hero, photo, pictureFormats } from '../../data/photos';
 import { buildingAndFloors, tel } from '../../data/site';
+import GovEmblem from '../ui/GovEmblem.astro';
 import Icon from '../ui/Icon.astro';
 ---
 
@@ -58,7 +61,7 @@ import Icon from '../ui/Icon.astro';
       <ul class="hero-trust">
         <li>
           <span class="mohw">
-            <img src="/assets/img/gov-emblem.png" alt="" width="20" height="20" />
+            <GovEmblem size={20} />
             보건복지부
           </span>{' '}
           사회서비스 제공기관
@@ -73,24 +76,27 @@ import Icon from '../ui/Icon.astro';
     <div class="hero-media">
       <div class="leaf-bg" aria-hidden="true"></div>
       <figure class="leaf-frame">
-        <picture>
-          <source
-            type="image/webp"
-            srcset="/assets/img/photos/hero-outdoor-720.webp 720w, /assets/img/photos/hero-outdoor-1080.webp 1080w"
-            sizes="(min-width: 1024px) 500px, (min-width: 768px) 440px, 72vw"
-          />
-          <img
-            src="/assets/img/photos/hero-outdoor-1080.jpg"
-            width="1080"
-            height="1260"
-            alt="선생님과 아이들이 손을 잡고 겨울 언덕길을 함께 걸어 내려오는 모습"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
+        <Picture
+          src={hero.image}
+          {...pictureFormats}
+          widths={hero.widths}
+          sizes={hero.sizes}
+          alt="선생님과 아이들이 손을 잡고 겨울 언덕길을 함께 걸어 내려오는 모습"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
       </figure>
       <div class="hero-circle" aria-hidden="true">
-        <img src="/assets/img/photos/horse-800.webp" alt="" width="800" height="600" loading="lazy" decoding="async" />
+        <Picture
+          src={photo('hero-circle.webp')}
+          {...pictureFormats}
+          widths={[160, 320, 480]}
+          sizes="(min-width: 1024px) 170px, (min-width: 768px) 141px, 23vw"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <Icon name="doodle" class="hero-doodle" />
       <Icon name="heart" class="hero-heart" />

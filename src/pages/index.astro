@@ -10,8 +10,11 @@ import Lightbox from '../components/sections/Lightbox.astro';
 import Moments from '../components/sections/Moments.astro';
 import Programs from '../components/sections/Programs.astro';
 import Trust from '../components/sections/Trust.astro';
+import { heroPreload } from '../data/photos';
 import { buildingAndFloors, instagramUrl, internationalPhone, site, streetAddress } from '../data/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const heroHint = await heroPreload();
 
 const description = `대전 대덕구 송촌동 ${site.name}. 보건복지부 지정 발달재활서비스·주간·방과후활동서비스 제공기관으로 감각통합·언어·놀이치료와 승마·VR·음악 활동을 1:1 맞춤으로 운영합니다. 상담 ${site.phone}`;
 const tagline = '아이의 속도로, 한 걸음씩 쑥쑥';
@@ -62,10 +65,10 @@ const structuredData = {
     <link
       rel="preload"
       as="image"
-      type="image/webp"
-      href="/assets/img/photos/hero-outdoor-1080.webp"
-      imagesrcset="/assets/img/photos/hero-outdoor-720.webp 720w, /assets/img/photos/hero-outdoor-1080.webp 1080w"
-      imagesizes="(min-width: 1024px) 500px, (min-width: 768px) 440px, 72vw"
+      type="image/avif"
+      href={heroHint.href}
+      imagesrcset={heroHint.srcset}
+      imagesizes={heroHint.sizes}
       fetchpriority="high"
     />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

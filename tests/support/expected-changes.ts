@@ -16,5 +16,5 @@ export const legacyExpectedChanges = {
    * perceptual tolerance and the diff images are reviewed by eye; everything
    * else must still match exactly.
    */
-  reencodedPhotos: false,
+  reencodedPhotos: true,
 };

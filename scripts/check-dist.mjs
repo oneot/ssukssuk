@@ -1,6 +1,7 @@
 // Post-build checks on dist/:
 // - public URLs that must keep working (OG image, logo, favicons, robots, ...)
-// - every internal link, asset reference and #fragment resolves
+// - every internal link, asset reference and #fragment resolves, and every
+//   image in _astro/ is used
 // - JSON-LD parses
 // - no image carries EXIF/XMP metadata (photos show children; GPS must never ship)
 // - fonts are self-hosted and the trimmed Pretendard slices cover every character
@@ -42,6 +43,8 @@ if (existsSync(join(DIST, 'CNAME')) && readFileSync(join(DIST, 'CNAME'), 'utf8')
 
 const files = walk(DIST);
 const pages = files.filter((file) => file.endsWith('.html'));
+const referenced = new Set();
+const IMAGE_EXTENSIONS = /\.(jpe?g|png|webp|avif|gif|svg)$/i;
 const idsByPage = new Map();
 const idsOf = (page) => {
   if (!idsByPage.has(page)) {
@@ -87,6 +90,7 @@ for (const page of pages) {
     let target = page;
     if (path) {
       const resolved = path.startsWith('/') ? path : posix.join(posix.dirname(pageUrl), path);
+      referenced.add(decodeURIComponent(resolved));
       let file = join(DIST, decodeURIComponent(resolved));
       if (resolved.endsWith('/')) file = join(file, 'index.html');
       if (!existsSync(file) || statSync(file).isDirectory()) {
@@ -98,6 +102,21 @@ for (const page of pages) {
     if (fragment && target.endsWith('.html') && !idsOf(target).has(fragment)) {
       errors.push(`${pageUrl}: missing #${fragment} (${raw})`);
     }
+  }
+}
+
+// --- unused images ----------------------------------------------------------
+// Astro ships an imported image file that no page ends up using (a photo left
+// in src/assets after it was removed from the content files, for example).
+for (const css of files.filter((file) => file.endsWith('.css'))) {
+  for (const m of readFileSync(css, 'utf8').matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
+    if (m[1].startsWith('/')) referenced.add(m[1]);
+  }
+}
+for (const file of files) {
+  const url = `/${relative(DIST, file).split('\\').join('/')}`;
+  if (url.startsWith('/_astro/') && IMAGE_EXTENSIONS.test(url) && !referenced.has(url)) {
+    errors.push(`${url} is not used by any page (delete its source file from src/assets, or use it)`);
   }
 }
 

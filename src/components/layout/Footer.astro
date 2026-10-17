@@ -1,6 +1,7 @@
 ---
 import { footerGrass } from '../../data/grass';
 import { fullAddress, site, tel } from '../../data/site';
+import GovEmblem from '../ui/GovEmblem.astro';
 import Grass from '../ui/Grass.astro';
 ---
 
@@ -18,7 +19,7 @@ import Grass from '../ui/Grass.astro';
       </p>
       <p>
         <span class="mohw">
-          <img src="/assets/img/gov-emblem.png" alt="" width="16" height="16" />
+          <GovEmblem size={16} />
           보건복지부
         </span>{' '}
         사회서비스 제공기관
